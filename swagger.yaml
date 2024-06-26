@@ -66,11 +66,15 @@ paths:
                   - statusCode
   /customers:
     get:
+      summary: List customers
       tags:
         - Customer
       parameters:
         - schema:
-            type: string
+            anyOf:
+              - type: string
+              - type: number
+            default: 50
           required: false
           name: limit
           in: query
@@ -144,6 +148,7 @@ paths:
                   - message
                   - statusCode
     post:
+      summary: Create a customer
       tags:
         - Customer
       requestBody:
@@ -154,8 +159,17 @@ paths:
               properties:
                 name:
                   type: string
+                  minLength: 3
+                  maxLength: 200
+                metadata:
+                  type: object
+                  additionalProperties:
+                    type: string
+                    minLength: 1
+                    maxLength: 500
               required:
                 - name
+              additionalProperties: false
       responses:
         "200":
           description: Customer created successfully
@@ -207,6 +221,7 @@ paths:
                   - statusCode
   /customers/{id}:
     get:
+      summary: Retrieve a customer
       tags:
         - Customer
       parameters:
