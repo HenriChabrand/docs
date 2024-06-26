@@ -405,7 +405,7 @@
     },
     "/v1/users/:id": {
       "get": {
-        "summary": "Retrieve a user",
+        "summary": "Retrieve a user or customer",
         "tags": [
           "User"
         ],
@@ -417,6 +417,16 @@
             "required": true,
             "name": "id",
             "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["user", "customer"]
+            },
+            "required": true,
+            "name": "x-model",
+            "in": "header",
+            "description": "Specify 'user' to return a User object or 'customer' to return a Customer object"
           }
         ],
         "responses": {
@@ -425,67 +435,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/User" },
+                    { "$ref": "#/components/schemas/Customer" }
                   ]
                 }
               }
