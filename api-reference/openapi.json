@@ -404,7 +404,7 @@
         }
       }
     },
-    "/v1/users/:id": {
+    "/v1/users/{id}#customer": {
       "get": {
         "summary": "Retrieve a user or customer",
         "tags": [
@@ -510,7 +510,17 @@
             "name": "x-model",
             "in": "header",
             "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
-          }
+          },
+        {
+          "schema": {
+            "type": "string",
+            "enum": ["user", "customer"]
+          },
+          "required": true,
+          "name": "query",
+          "in": "query",
+          "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
+        }
         ],
         "requestBody": {
           "content": {
