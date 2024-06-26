@@ -421,7 +421,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["user", "customer"]
+              "enum": ["user", "customer", "admin", "guest", "moderator", "vendor", "partner", "employee", "manager", "developer", "tester", "analyst", "consultant", "contractor", "freelancer", "intern", "trainee", "executive", "director", "officer", "supervisor", "coordinator"]
             },
             "required": true,
             "name": "x-model",
@@ -437,13 +437,53 @@
                 "schema": {
                   "oneOf": [
                     { "$ref": "#/components/schemas/User" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
+                    { "$ref": "#/components/schemas/Customer" },
                     { "$ref": "#/components/schemas/Customer" }
                   ],
                   "discriminator": {
                     "propertyName": "object",
                     "mapping": {
                       "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer"
+                      "customer": "#/components/schemas/Customer",
+                      "admin": "#/components/schemas/Customer",
+                      "guest": "#/components/schemas/Customer",
+                      "moderator": "#/components/schemas/Customer",
+                      "vendor": "#/components/schemas/Customer",
+                      "partner": "#/components/schemas/Customer",
+                      "employee": "#/components/schemas/Customer",
+                      "manager": "#/components/schemas/Customer",
+                      "developer": "#/components/schemas/Customer",
+                      "tester": "#/components/schemas/Customer",
+                      "analyst": "#/components/schemas/Customer",
+                      "consultant": "#/components/schemas/Customer",
+                      "contractor": "#/components/schemas/Customer",
+                      "freelancer": "#/components/schemas/Customer",
+                      "intern": "#/components/schemas/Customer",
+                      "trainee": "#/components/schemas/Customer",
+                      "executive": "#/components/schemas/Customer",
+                      "director": "#/components/schemas/Customer",
+                      "officer": "#/components/schemas/Customer",
+                      "supervisor": "#/components/schemas/Customer",
+                      "coordinator": "#/components/schemas/Customer"
                     }
                   }
                 }
