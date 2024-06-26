@@ -10,7 +10,76 @@
   },
   "components": {
     "schemas": {
+      "Pet": {
+        "type": "object",
+        "discriminator": {
+          "propertyName": "petType"
+        },
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "petType": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "petType"
+        ]
+      },
+      "Cat": {
+        "description": "A representation of a cat. Note that `Cat` will be used as the discriminator value.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Pet"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "huntingSkill": {
+                "type": "string",
+                "description": "The measured skill for hunting",
+                "default": "lazy",
+                "enum": [
+                  "clueless",
+                  "lazy",
+                  "adventurous",
+                  "aggressive"
+                ]
+              }
+            },
+            "required": [
+              "huntingSkill"
+            ]
+          }
+        ]
+      },
+      "Dog": {
+        "description": "A representation of a dog. Note that `Dog` will be used as the discriminator value.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Pet"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "packSize": {
+                "type": "integer",
+                "format": "int32",
+                "description": "the size of the pack the dog is from",
+                "default": 0,
+                "minimum": 0
+              }
+            },
+            "required": [
+              "packSize"
+            ]
+          }
+        ]
+      },
       "Customer": {
+        "description": "Customer object",
         "type": "object",
         "properties": {
           "object": {
@@ -436,54 +505,14 @@
               "application/json": {
                 "schema": {
                   "oneOf": [
-                    { "$ref": "#/components/schemas/User" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" }
+                    { "$ref": "#/components/schemas/Cat" },
+                    { "$ref": "#/components/schemas/Dog" }
                   ],
                   "discriminator": {
-                    "propertyName": "object",
+                    "propertyName": "petType",
                     "mapping": {
-                      "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer",
-                      "admin": "#/components/schemas/Customer",
-                      "guest": "#/components/schemas/Customer",
-                      "moderator": "#/components/schemas/Customer",
-                      "vendor": "#/components/schemas/Customer",
-                      "partner": "#/components/schemas/Customer",
-                      "employee": "#/components/schemas/Customer",
-                      "manager": "#/components/schemas/Customer",
-                      "developer": "#/components/schemas/Customer",
-                      "tester": "#/components/schemas/Customer",
-                      "analyst": "#/components/schemas/Customer",
-                      "consultant": "#/components/schemas/Customer",
-                      "contractor": "#/components/schemas/Customer",
-                      "freelancer": "#/components/schemas/Customer",
-                      "intern": "#/components/schemas/Customer",
-                      "trainee": "#/components/schemas/Customer",
-                      "executive": "#/components/schemas/Customer",
-                      "director": "#/components/schemas/Customer",
-                      "officer": "#/components/schemas/Customer",
-                      "supervisor": "#/components/schemas/Customer",
-                      "coordinator": "#/components/schemas/Customer"
+                      "dog": "#/components/schemas/Dog",
+                      "cat": "#/components/schemas/Cat"                   
                     }
                   }
                 }
