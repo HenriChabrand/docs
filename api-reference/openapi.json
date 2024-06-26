@@ -452,6 +452,67 @@
           }
         }
       }
+    },
+    "/v1/users": {
+      "post": {
+        "summary": "Create a user or customer",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["user", "customer"]
+            },
+            "required": true,
+            "name": "x-model",
+            "in": "header",
+            "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/User" },
+                  { "$ref": "#/components/schemas/Customer" }
+                ],
+                "discriminator": {
+                  "propertyName": "object",
+                  "mapping": {
+                    "user": "#/components/schemas/User",
+                    "customer": "#/components/schemas/Customer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/User" },
+                    { "$ref": "#/components/schemas/Customer" }
+                  ],
+                  "discriminator": {
+                    "propertyName": "object",
+                    "mapping": {
+                      "user": "#/components/schemas/User",
+                      "customer": "#/components/schemas/Customer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
