@@ -1,5 +1,5 @@
 {
-  "openapi":["api-reference/openapi.json", "api-reference-pet/openapi.json"],
+  "openapi":["api-reference/openapi.json"],
   "api": {
 		"baseUrl": "https://api.example.com",
 		"auth": {
@@ -100,37 +100,10 @@
       ]
     },
     {
-      "group": "Customer",
-      "pages": [
-        "api-reference/customer/list-customers",
-        "api-reference/customer/create-a-customer",
-        "api-reference/customer/retrieve-a-customer"
-      ]
-    },
-    {
       "group": "User",
       "pages": [
         "api-reference/user/retrieve-a-user-or-customer",
         "api-reference/user/create-a-user-or-customer"
-      ]
-    },
-    {
-      "group": "Pet",
-      "pages": [
-        "api-reference-pet/pet/get-a-cat-or-a-dog"
-      ]
-    },
-    {
-      "group": "Cat",
-      "pages": [
-        "api-reference-pet/cat/get-a-cat",
-        "api-reference-pet/cat/get-a-cat-1"
-      ]
-    },
-    {
-      "group": "Dog",
-      "pages": [
-        "api-reference-pet/dog/get-a-dog"
       ]
     }
   ],
