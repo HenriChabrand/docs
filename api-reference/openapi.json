@@ -504,12 +504,13 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["user", "customer"]
+              "enum": ["customer"],
+              "default": "customer"
             },
             "required": true,
             "name": "x-model",
             "in": "header",
-            "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
+            "description": "Specify 'customer' to create a Customer object"
           },
         {
           "schema": {
