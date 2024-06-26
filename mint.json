@@ -1,5 +1,5 @@
 {
-  "openapi":["api-reference/openapi.json", "api-reference/openapi-pet.json"],
+  "openapi":["api-reference/openapi.json", "api-reference-pet/openapi.json"],
   "api": {
 		"baseUrl": "https://api.example.com",
 		"auth": {
