@@ -5,26 +5,53 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/pets": {
+    "/pets#x-model=cat": {
       "get": {
-        "tags": ["Pet"],
-        "summary": "Get a Cat or a Dog",
+        "tags": ["Cat"],
+        "summary": "Get a Cat",
         "responses": {
-          "200": {
-            "description": "A Cat or a Dog",
+          "200": {  
+            "description": "A Cat",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PetResponse"
+                  "$ref": "#/components/schemas/Cat"
                 }
               }
             },
             "headers": {
               "x-pet-type": {
-                "description": "Type of pet returned; either 'cat' or 'dog'",
+                "description": "Type of pet returned; either 'cat'",
                 "schema": {
                   "type": "string",
-                  "enum": ["cat", "dog"]
+                  "enum": ["cat"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets#x-model=dog": {
+      "get": {
+        "tags": ["Dog"],
+        "summary": "Get a Dog",
+        "responses": {
+          "200": {
+            "description": "A Dog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dog"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'dog'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["dog"]
                 }
               }
             }
@@ -35,19 +62,6 @@
   },
   "components": {
     "schemas": {
-      "PetResponse": {
-        "oneOf": [
-          { "$ref": "#/components/schemas/Cat" },
-          { "$ref": "#/components/schemas/Dog" }
-        ],
-        "discriminator": {
-          "propertyName": "petType",
-          "mapping": {
-            "cat": "#/components/schemas/Cat",
-            "dog": "#/components/schemas/Dog"
-          }
-        }
-      },
       "Cat": {
         "type": "object",
         "properties": {
