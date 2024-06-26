@@ -90,6 +90,7 @@
     {
       "group": "Customer",
       "pages": [
+        "api-reference/customer/object",
         "api-reference/customer/list-customers",
         "api-reference/customer/create-customer",
         "api-reference/customer/retrieve-a-customer"
