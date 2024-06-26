@@ -438,7 +438,14 @@
                   "oneOf": [
                     { "$ref": "#/components/schemas/User" },
                     { "$ref": "#/components/schemas/Customer" }
-                  ]
+                  ],
+                  "discriminator": {
+                    "propertyName": "object",
+                    "mapping": {
+                      "user": "#/components/schemas/User",
+                      "customer": "#/components/schemas/Customer"
+                    }
+                  }
                 }
               }
             }
