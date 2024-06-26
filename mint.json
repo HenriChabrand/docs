@@ -115,6 +115,12 @@
       ]
     },
     {
+      "group": "Pet",
+      "pages": [
+        "api-reference-pet/pet/get-a-cat-or-a-dog"
+      ]
+    },
+    {
       "group": "Cat",
       "pages": [
         "api-reference-pet/cat/get-a-cat",
