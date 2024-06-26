@@ -45,7 +45,7 @@ paths:
       tags:
         - Status Check
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -70,28 +70,30 @@ paths:
         - Customer
       parameters:
         - schema:
+            type: string
+          required: false
+          name: limit
+          in: query
+        - schema:
+            type: string
+          required: false
+          name: cursor
+          in: query
+        - schema:
             type: object
             properties:
-              limit:
+              name:
                 type: string
-              cursor:
-                type: string
-              filter:
+              metadata:
                 type: object
-                properties:
-                  name:
-                    type: string
-                  metadata:
-                    type: object
-                    additionalProperties:
-                      type: string
-                additionalProperties: false
+                additionalProperties:
+                  type: string
             additionalProperties: false
           required: false
-          name: query
+          name: filter
           in: query
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
@@ -155,7 +157,7 @@ paths:
               required:
                 - name
       responses:
-        '200':
+        "200":
           description: Customer created successfully
           content:
             application/json:
@@ -214,7 +216,7 @@ paths:
           name: id
           in: path
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:
