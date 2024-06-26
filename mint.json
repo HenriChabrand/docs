@@ -1,5 +1,5 @@
 {
-  "openapi":"swagger.yaml",
+  "openapi":"api-reference/openapi.json",
   "api": {
 		"baseUrl": "https://api.example.com",
 		"auth": {
