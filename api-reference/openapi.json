@@ -1,558 +1,139 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
-    "title": "Swagger API"
+    "title": "Pet API",
+    "version": "1.0.0"
   },
-  "externalDocs": {
-    "description": "View the raw OpenAPI Specification in JSON format",
-    "url": "/swagger.json"
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["Pet"],
+        "summary": "Get a Cat or a Dog",
+        "responses": {
+          "200": {
+            "description": "A Cat or a Dog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cat"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets#x-model=cat": {
+      "get": {
+        "tags": ["Cat"],
+        "summary": "Get a Cat",
+        "responses": {
+          "200": {  
+            "description": "A Cat",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cat"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'cat'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["cat"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets/{id} #header[x-model]=cat": {
+      "get": {
+        "tags": ["Cat"],
+        "summary": "Get a Cat",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {  
+            "description": "A Cat",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cat"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'cat'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["cat"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pets#x-model=dog": {
+      "get": {
+        "tags": ["Dog"],
+        "summary": "Get a Dog",
+        "responses": {
+          "200": {
+            "description": "A Dog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dog"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'dog'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["dog"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
-      "Customer": {
-        "description": "Customer object",
+      "Cat": {
         "type": "object",
         "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "customer"
-            ],
-            "default": "customer"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 200
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500
-            }
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
+          "petType": { "type": "string", "enum": ["cat"] },
+          "name": { "type": "string" },
+          "color": { "type": "string" },
+          "meow": { "type": "boolean" }
         },
-        "required": [
-          "id",
-          "name",
-          "metadata",
-          "createdAt",
-          "updatedAt"
-        ],
-        "additionalProperties": false
+        "required": ["petType", "name", "meow"]
       },
-      "User": {
+      "Dog": {
         "type": "object",
         "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "customer"
-            ],
-            "default": "customer"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 200
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500
-            }
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
+          "petType": { "type": "string", "enum": ["dog"] },
+          "name": { "type": "string" },
+          "breed": { "type": "string" },
+          "bark": { "type": "boolean" }
         },
-        "required": [
-          "id",
-          "name",
-          "metadata",
-          "createdAt",
-          "updatedAt"
-        ],
-        "additionalProperties": false
-      }
-    },
-    "parameters": {}
-  },
-  "paths": {
-    "/v1/customers": {
-      "get": {
-        "summary": "List customers",
-        "tags": [
-          "Customer"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "string"
-                }
-              ],
-              "default": 50
-            },
-            "required": false,
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": false,
-            "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "metadata": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              },
-              "additionalProperties": false
-            },
-            "required": false,
-            "name": "filter",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create a customer",
-        "tags": [
-          "Customer"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 200
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 500
-                    }
-                  }
-                },
-                "required": [
-                  "name"
-                ],
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          }
-                        },
-                        "required": [
-                          "name"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/customers/{id}": {
-      "get": {
-        "summary": "Retrieve a customer",
-        "tags": [
-          "Customer"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "id",
-            "in": "path"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users/:id": {
-      "get": {
-        "summary": "Retrieve a user or customer",
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "id",
-            "in": "path"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["user", "customer", "admin", "guest", "moderator", "vendor", "partner", "employee", "manager", "developer", "tester", "analyst", "consultant", "contractor", "freelancer", "intern", "trainee", "executive", "director", "officer", "supervisor", "coordinator"]
-            },
-            "required": true,
-            "name": "x-model",
-            "in": "header",
-            "description": "Specify 'user' to return a User object or 'customer' to return a Customer object"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    { "$ref": "#/components/schemas/User" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" }
-                  ],
-                  "discriminator": {
-                    "propertyName": "object",
-                    "mapping": {
-                      "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer",
-                      "admin": "#/components/schemas/Customer",
-                      "guest": "#/components/schemas/Customer",
-                      "moderator": "#/components/schemas/Customer",
-                      "vendor": "#/components/schemas/Customer",
-                      "partner": "#/components/schemas/Customer",
-                      "employee": "#/components/schemas/Customer",
-                      "manager": "#/components/schemas/Customer",
-                      "developer": "#/components/schemas/Customer",
-                      "tester": "#/components/schemas/Customer",
-                      "analyst": "#/components/schemas/Customer",
-                      "consultant": "#/components/schemas/Customer",
-                      "contractor": "#/components/schemas/Customer",
-                      "freelancer": "#/components/schemas/Customer",
-                      "intern": "#/components/schemas/Customer",
-                      "trainee": "#/components/schemas/Customer",
-                      "executive": "#/components/schemas/Customer",
-                      "director": "#/components/schemas/Customer",
-                      "officer": "#/components/schemas/Customer",
-                      "supervisor": "#/components/schemas/Customer",
-                      "coordinator": "#/components/schemas/Customer"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users": {
-      "post": {
-        "summary": "Create a user or customer",
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["user", "customer"]
-            },
-            "required": true,
-            "name": "x-model",
-            "in": "header",
-            "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  { "$ref": "#/components/schemas/User" },
-                  { "$ref": "#/components/schemas/Customer" }
-                ],
-                "discriminator": {
-                  "propertyName": "object",
-                  "mapping": {
-                    "user": "#/components/schemas/User",
-                    "customer": "#/components/schemas/Customer"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    { "$ref": "#/components/schemas/User" },
-                    { "$ref": "#/components/schemas/Customer" }
-                  ],
-                  "discriminator": {
-                    "propertyName": "object",
-                    "mapping": {
-                      "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        "required": ["petType", "name", "bark"]
       }
     }
   }
