@@ -1,0 +1,73 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pet API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["Pet"],
+        "summary": "Get a Cat or a Dog",
+        "responses": {
+          "200": {
+            "description": "A Cat or a Dog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetResponse"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'cat' or 'dog'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["cat", "dog"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PetResponse": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/Cat" },
+          { "$ref": "#/components/schemas/Dog" }
+        ],
+        "discriminator": {
+          "propertyName": "petType",
+          "mapping": {
+            "cat": "#/components/schemas/Cat",
+            "dog": "#/components/schemas/Dog"
+          }
+        }
+      },
+      "Cat": {
+        "type": "object",
+        "properties": {
+          "petType": { "type": "string", "enum": ["cat"] },
+          "name": { "type": "string" },
+          "color": { "type": "string" },
+          "meow": { "type": "boolean" }
+        },
+        "required": ["petType", "name", "meow"]
+      },
+      "Dog": {
+        "type": "object",
+        "properties": {
+          "petType": { "type": "string", "enum": ["dog"] },
+          "name": { "type": "string" },
+          "breed": { "type": "string" },
+          "bark": { "type": "boolean" }
+        },
+        "required": ["petType", "name", "bark"]
+      }
+    }
+  }
+}

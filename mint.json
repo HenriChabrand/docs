@@ -1,5 +1,5 @@
 {
-  "openapi":"api-reference/openapi.json",
+  "openapi":["api-reference/openapi.json", "api-reference/openapi2.json"],
   "api": {
 		"baseUrl": "https://api.example.com",
 		"auth": {
@@ -36,6 +36,50 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
+    },
+    {
+      "name": "API Reference Pet",
+      "url": "api-reference-pet"
     }
   ],
   "anchors": [
@@ -113,7 +157,7 @@
     {
       "group": "Pet",
       "pages": [
-        "api-reference/pet/get-a-cat-or-a-dog"
+        "api-reference-pet/pet/get-a-cat-or-a-dog"
       ]
     }
   ],
