@@ -1,4 +1,11 @@
 {
+  "openapi":"swagger.yaml",
+  "api": {
+		"baseUrl": "https://api.example.com",
+		"auth": {
+      "method": "bearer"
+    }
+  },
   "$schema": "https://mintlify.com/schema.json",
   "name": "Starter Kit",
   "logo": {
@@ -75,11 +82,17 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Status Check",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/status-check/get-status"
+      ]
+    },
+    {
+      "group": "Customer",
+      "pages": [
+        "api-reference/customer/get-customers",
+        "api-reference/customer/post-customers",
+        "api-reference/customer/get-customers-1"
       ]
     }
   ],
