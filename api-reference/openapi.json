@@ -494,7 +494,7 @@
         }
       }
     },
-    "/v1/users": {
+    "/v1/users#customer": {
       "post": {
         "summary": "Create a user or customer",
         "tags": [
