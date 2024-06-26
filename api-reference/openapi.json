@@ -226,6 +226,12 @@
         }
       },
       "post": {
+        "x-codeSamples":{
+          
+          "lang": "javascript",
+          "label": "List all potted plants",
+          "source": "const planter = require('planter');\nplanter.list({ potted: true });"
+        },  
         "summary": "Create a customer",
         "tags": [
           "Customer"
