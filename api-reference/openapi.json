@@ -51,85 +51,102 @@
           "updatedAt"
         ],
         "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "enum": [
+              "customer"
+            ],
+            "default": "customer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 200
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "metadata",
+          "createdAt",
+          "updatedAt"
+        ],
+        "additionalProperties": false
       }
     },
     "parameters": {}
   },
   "paths": {
-    "/status": {
+    "/v1/customers": {
       "get": {
-        "tags": [
-          "Status Check"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "nullable": true
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/customers": {
-      "get": {
+        "summary": "List customers",
         "tags": [
           "Customer"
         ],
         "parameters": [
           {
             "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
               "type": "object",
               "properties": {
-                "limit": {
+                "name": {
                   "type": "string"
                 },
-                "cursor": {
-                  "type": "string"
-                },
-                "filter": {
+                "metadata": {
                   "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "metadata": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "additionalProperties": false
+                  "additionalProperties": {
+                    "type": "string"
+                  }
                 }
               },
               "additionalProperties": false
             },
             "required": false,
-            "name": "query",
+            "name": "filter",
             "in": "query"
           }
         ],
@@ -208,6 +225,7 @@
         }
       },
       "post": {
+        "summary": "Create a customer",
         "tags": [
           "Customer"
         ],
@@ -218,19 +236,30 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 200
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    }
                   }
                 },
                 "required": [
                   "name"
-                ]
+                ],
+                "additionalProperties": false
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Customer created successfully",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
@@ -243,46 +272,29 @@
                       "type": "string"
                     },
                     "responseObject": {
-                      "type": "object",
-                      "properties": {
-                        "object": {
-                          "type": "string",
-                          "enum": [
-                            "customer"
-                          ],
-                          "default": "customer"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string",
-                          "minLength": 3,
-                          "maxLength": 200
-                        },
-                        "metadata": {
-                          "type": "object",
-                          "additionalProperties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
                             "type": "string",
-                            "minLength": 1,
-                            "maxLength": 500
+                            "minLength": 3,
+                            "maxLength": 200
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 500
+                            }
                           }
                         },
-                        "createdAt": {
-                          "type": "string"
-                        },
-                        "updatedAt": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "name",
-                        "metadata",
-                        "createdAt",
-                        "updatedAt"
-                      ],
-                      "additionalProperties": false
+                        "required": [
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
                     },
                     "statusCode": {
                       "type": "number"
@@ -300,8 +312,9 @@
         }
       }
     },
-    "/customers/{id}": {
+    "/v2/customers/:id": {
       "get": {
+        "summary": "Retrieve a customer",
         "tags": [
           "Customer"
         ],
@@ -330,46 +343,140 @@
                       "type": "string"
                     },
                     "responseObject": {
-                      "type": "object",
-                      "properties": {
-                        "object": {
-                          "type": "string",
-                          "enum": [
-                            "customer"
-                          ],
-                          "default": "customer"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string",
-                          "minLength": 3,
-                          "maxLength": 200
-                        },
-                        "metadata": {
-                          "type": "object",
-                          "additionalProperties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "object": {
                             "type": "string",
-                            "minLength": 1,
-                            "maxLength": 500
+                            "enum": [
+                              "customer"
+                            ],
+                            "default": "customer"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 200
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 500
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
                           }
                         },
-                        "createdAt": {
-                          "type": "string"
+                        "required": [
+                          "id",
+                          "name",
+                          "metadata",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "statusCode": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "success",
+                    "message",
+                    "statusCode"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/:id": {
+      "get": {
+        "summary": "Retrieve a user",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "responseObject": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "customer"
+                            ],
+                            "default": "customer"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 3,
+                            "maxLength": 200
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 500
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          }
                         },
-                        "updatedAt": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "name",
-                        "metadata",
-                        "createdAt",
-                        "updatedAt"
-                      ],
-                      "additionalProperties": false
+                        "required": [
+                          "id",
+                          "name",
+                          "metadata",
+                          "createdAt",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
                     },
                     "statusCode": {
                       "type": "number"
