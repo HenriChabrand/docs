@@ -490,10 +490,10 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["user", "customer", "admin", "guest", "moderator", "vendor", "partner", "employee", "manager", "developer", "tester", "analyst", "consultant", "contractor", "freelancer", "intern", "trainee", "executive", "director", "officer", "supervisor", "coordinator"]
+              "enum": ["dog", "cat"]
             },
             "required": true,
-            "name": "x-model",
+            "name": "petType",
             "in": "header",
             "description": "Specify 'user' to return a User object or 'customer' to return a Customer object"
           }
