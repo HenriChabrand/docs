@@ -32,6 +32,41 @@
         }
       }
     },
+    "/pets/{id} #header[x-model]=cat": {
+      "get": {
+        "tags": ["Cat"],
+        "summary": "Get a Cat",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {  
+            "description": "A Cat",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cat"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'cat'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["cat"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pets#x-model=dog": {
       "get": {
         "tags": ["Dog"],
