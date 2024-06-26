@@ -1,5 +1,5 @@
 {
-  "openapi":["api-reference/openapi.json", "api-reference/openapi2.json"],
+  "openapi":["api-reference/openapi.json", "api-reference/openapi-pet.json"],
   "api": {
 		"baseUrl": "https://api.example.com",
 		"auth": {
@@ -38,47 +38,7 @@
       "url": "api-reference"
     },
     {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
-      "url": "api-reference-pet"
-    },
-    {
-      "name": "API Reference Pet",
+      "name": "API Models Reference",
       "url": "api-reference-pet"
     }
   ],
