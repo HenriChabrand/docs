@@ -90,10 +90,15 @@
     {
       "group": "Customer",
       "pages": [
-        "api-reference/customer/object",
         "api-reference/customer/list-customers",
-        "api-reference/customer/create-customer",
+        "api-reference/customer/create-a-customer",
         "api-reference/customer/retrieve-a-customer"
+      ]
+    },
+    {
+      "group": "User",
+      "pages": [
+        "api-reference/user/retrieve-a-user"
       ]
     }
   ],
