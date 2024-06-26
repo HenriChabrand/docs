@@ -404,7 +404,7 @@
         }
       }
     },
-    "/v1/users/{id}#customer": {
+    "/v1/users/{id}#generic.customer": {
       "get": {
         "summary": "Retrieve a user or customer",
         "tags": [
