@@ -1,586 +1,72 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
-    "title": "Swagger API"
+    "title": "Pet API",
+    "version": "1.0.0"
   },
-  "externalDocs": {
-    "description": "View the raw OpenAPI Specification in JSON format",
-    "url": "/swagger.json"
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["Pet"],
+        "summary": "Get a Cat or a Dog",
+        "responses": {
+          "200": {
+            "description": "A Cat or a Dog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PetResponse"
+                }
+              }
+            },
+            "headers": {
+              "x-pet-type": {
+                "description": "Type of pet returned; either 'cat' or 'dog'",
+                "schema": {
+                  "type": "string",
+                  "enum": ["cat", "dog"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
-      "Pet": {
-        "type": "object",
+      "PetResponse": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/Cat" },
+          { "$ref": "#/components/schemas/Dog" }
+        ],
         "discriminator": {
-          "propertyName": "petType"
-        },
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "petType": {
-            "type": "string"
+          "propertyName": "petType",
+          "mapping": {
+            "cat": "#/components/schemas/Cat",
+            "dog": "#/components/schemas/Dog"
           }
-        },
-        "required": [
-          "name",
-          "petType"
-        ]
+        }
       },
       "Cat": {
-        "description": "A representation of a cat. Note that `Cat` will be used as the discriminator value.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Pet"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "huntingSkill": {
-                "type": "string",
-                "description": "The measured skill for hunting",
-                "default": "lazy",
-                "enum": [
-                  "clueless",
-                  "lazy",
-                  "adventurous",
-                  "aggressive"
-                ]
-              }
-            },
-            "required": [
-              "huntingSkill"
-            ]
-          }
-        ]
+        "type": "object",
+        "properties": {
+          "petType": { "type": "string", "enum": ["cat"] },
+          "name": { "type": "string" },
+          "color": { "type": "string" },
+          "meow": { "type": "boolean" }
+        },
+        "required": ["petType", "name", "meow"]
       },
       "Dog": {
-        "description": "A representation of a dog. Note that `Dog` will be used as the discriminator value.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Pet"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "packSize": {
-                "type": "integer",
-                "format": "int32",
-                "description": "the size of the pack the dog is from",
-                "default": 0,
-                "minimum": 0
-              }
-            },
-            "required": [
-              "packSize"
-            ]
-          }
-        ]
-      },
-      "Customer": {
-        "description": "Customer object",
         "type": "object",
         "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "customer"
-            ],
-            "default": "customer"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 200
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500
-            }
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
+          "petType": { "type": "string", "enum": ["dog"] },
+          "name": { "type": "string" },
+          "breed": { "type": "string" },
+          "bark": { "type": "boolean" }
         },
-        "required": [
-          "id",
-          "name",
-          "metadata",
-          "createdAt",
-          "updatedAt"
-        ],
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "customer"
-            ],
-            "default": "customer"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 200
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500
-            }
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "metadata",
-          "createdAt",
-          "updatedAt"
-        ],
-        "additionalProperties": false
-      }
-    },
-    "parameters": {}
-  },
-  "paths": {
-    "/v1/customers": {
-      "get": {
-        "summary": "List customers",
-        "tags": [
-          "Customer"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "number"
-                },
-                {
-                  "type": "string"
-                }
-              ],
-              "default": 50
-            },
-            "required": false,
-            "name": "limit",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": false,
-            "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "metadata": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string"
-                  }
-                }
-              },
-              "additionalProperties": false
-            },
-            "required": false,
-            "name": "filter",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Create a customer",
-        "tags": [
-          "Customer"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 200
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 500
-                    }
-                  }
-                },
-                "required": [
-                  "name"
-                ],
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          }
-                        },
-                        "required": [
-                          "name"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v2/customers/{id}": {
-      "get": {
-        "summary": "Retrieve a customer",
-        "tags": [
-          "Customer"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "id",
-            "in": "path"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "statusCode": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
-                  ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users/:id": {
-      "get": {
-        "summary": "Retrieve a user or customer",
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "id",
-            "in": "path"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["dog", "cat"]
-            },
-            "required": true,
-            "name": "petType",
-            "in": "header",
-            "description": "Specify 'user' to return a User object or 'customer' to return a Customer object"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    { "$ref": "#/components/schemas/Cat" },
-                    { "$ref": "#/components/schemas/Dog" }
-                  ],
-                  "discriminator": {
-                    "propertyName": "petType",
-                    "mapping": {
-                      "dog": "#/components/schemas/Dog",
-                      "cat": "#/components/schemas/Cat"                   
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users": {
-      "post": {
-        "summary": "Create a user or customer",
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["user", "customer"]
-            },
-            "required": true,
-            "name": "x-model",
-            "in": "header",
-            "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  { "$ref": "#/components/schemas/User" },
-                  { "$ref": "#/components/schemas/Customer" }
-                ],
-                "discriminator": {
-                  "propertyName": "object",
-                  "mapping": {
-                    "user": "#/components/schemas/User",
-                    "customer": "#/components/schemas/Customer"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    { "$ref": "#/components/schemas/User" },
-                    { "$ref": "#/components/schemas/Customer" }
-                  ],
-                  "discriminator": {
-                    "propertyName": "object",
-                    "mapping": {
-                      "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        "required": ["petType", "name", "bark"]
       }
     }
   }

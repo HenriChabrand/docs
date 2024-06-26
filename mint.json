@@ -109,6 +109,12 @@
         "api-reference/user/retrieve-a-user-or-customer",
         "api-reference/user/create-a-user-or-customer"
       ]
+    },
+    {
+      "group": "Pet",
+      "pages": [
+        "api-reference/pet/get-a-cat-or-a-dog"
+      ]
     }
   ],
   "footerSocials": {
