@@ -312,7 +312,7 @@
         }
       }
     },
-    "/v2/customers/:id": {
+    "/v2/customers/{id}": {
       "get": {
         "summary": "Retrieve a customer",
         "tags": [
