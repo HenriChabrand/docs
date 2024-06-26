@@ -90,9 +90,9 @@
     {
       "group": "Customer",
       "pages": [
-        "api-reference/customer/get-customers",
-        "api-reference/customer/post-customers",
-        "api-reference/customer/get-customers-1"
+        "api-reference/customer/list-customers",
+        "api-reference/customer/create-customer",
+        "api-reference/customer/retrieve-a-customer"
       ]
     }
   ],
