@@ -103,7 +103,7 @@
       "get": {
         "summary": "List customers",
         "tags": [
-          "Customer"
+          "Generic","Customer"
         ],
         "parameters": [
           {
@@ -234,7 +234,7 @@
         },  
         "summary": "Create a customer",
         "tags": [
-          "Customer"
+          "Generic","Customer"
         ],
         "requestBody": {
           "content": {
@@ -323,7 +323,7 @@
       "get": {
         "summary": "Retrieve a customer",
         "tags": [
-          "Customer"
+          "Generic","Customer"
         ],
         "parameters": [
           {
@@ -410,11 +410,11 @@
         }
       }
     },
-    "/v1/users/{id}#generic.customer": {
+    "/v1/users/{id}#salesforce#generic.customer": {
       "get": {
         "summary": "Retrieve a user or customer",
         "tags": [
-          "User"
+          "Salesforce","Generic","User"
         ],
         "parameters": [
           {
@@ -504,7 +504,7 @@
       "post": {
         "summary": "Create a user or customer",
         "tags": [
-          "User"
+          "Generic","User"
         ],
         "parameters": [
           {
