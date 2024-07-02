@@ -80,30 +80,11 @@
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "Customer",
       "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Status Check",
-      "pages": [
-        "api-reference/status-check/get-status"
-      ]
-    },
-    {
-      "group": "Generic",
-      "pages": [
-        "api-reference/generic/list-customers",
-        "api-reference/generic/create-a-customer",
-        "api-reference/generic/retrieve-a-customer",
-        "api-reference/generic/create-a-user-or-customer"
-      ]
-    },
-    {
-      "group": "Salesforce",
-      "pages": [
-        "api-reference/salesforce/retrieve-a-user-or-customer"
+        "api-reference/customer/list-customers",
+        "api-reference/customer/create-a-customer",
+        "api-reference/customer/retrieve-a-customer"
       ]
     }
   ],

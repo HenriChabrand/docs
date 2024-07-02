@@ -11,16 +11,8 @@
   "components": {
     "schemas": {
       "Customer": {
-        "description": "Customer object",
         "type": "object",
         "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "customer"
-            ],
-            "default": "customer"
-          },
           "id": {
             "type": "string"
           },
@@ -47,53 +39,9 @@
         "required": [
           "id",
           "name",
-          "metadata",
           "createdAt",
           "updatedAt"
-        ],
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "object": {
-            "type": "string",
-            "enum": [
-              "customer"
-            ],
-            "default": "customer"
-          },
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 200
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500
-            }
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "metadata",
-          "createdAt",
-          "updatedAt"
-        ],
-        "additionalProperties": false
+        ]
       }
     },
     "parameters": {}
@@ -103,7 +51,7 @@
       "get": {
         "summary": "List customers",
         "tags": [
-          "Generic","Customer"
+          "Customer"
         ],
         "parameters": [
           {
@@ -135,12 +83,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 200
                 },
                 "metadata": {
                   "type": "object",
                   "additionalProperties": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
                   }
                 }
               },
@@ -153,71 +105,83 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
                       }
                     },
-                    "statusCode": {
-                      "type": "number"
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "customer"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "minLength": 3,
+                                    "maxLength": 200
+                                  },
+                                  "metadata": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "type": "string",
+                                      "minLength": 1,
+                                      "maxLength": 500
+                                    }
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "name",
+                                  "createdAt",
+                                  "updatedAt"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "data",
+                        "next"
+                      ],
+                      "additionalProperties": false
                     }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
                   ]
                 }
               }
@@ -226,15 +190,9 @@
         }
       },
       "post": {
-        "x-codeSamples":{
-          
-          "lang": "javascript",
-          "label": "List all potted plants",
-          "source": "const planter = require('planter');\nplanter.list({ potted: true });"
-        },  
         "summary": "Create a customer",
         "tags": [
-          "Generic","Customer"
+          "Customer"
         ],
         "requestBody": {
           "content": {
@@ -265,52 +223,54 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Success",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          }
-                        },
-                        "required": [
-                          "name"
-                        ],
-                        "additionalProperties": false
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "customer"
+                        }
                       }
                     },
-                    "statusCode": {
-                      "type": "number"
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 200
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 500
+                          }
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "createdAt",
+                        "updatedAt"
+                      ]
                     }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
                   ]
                 }
               }
@@ -319,11 +279,11 @@
         }
       }
     },
-    "/v2/customers/{id}": {
+    "/v1/customers/{id}": {
       "get": {
         "summary": "Retrieve a customer",
         "tags": [
-          "Generic","Customer"
+          "Customer"
         ],
         "parameters": [
           {
@@ -337,234 +297,54 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "responseObject": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "object": {
-                            "type": "string",
-                            "enum": [
-                              "customer"
-                            ],
-                            "default": "customer"
-                          },
-                          "id": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 3,
-                            "maxLength": 200
-                          },
-                          "metadata": {
-                            "type": "object",
-                            "additionalProperties": {
-                              "type": "string",
-                              "minLength": 1,
-                              "maxLength": 500
-                            }
-                          },
-                          "createdAt": {
-                            "type": "string"
-                          },
-                          "updatedAt": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "name",
-                          "metadata",
-                          "createdAt",
-                          "updatedAt"
-                        ],
-                        "additionalProperties": false
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "customer"
+                        }
                       }
                     },
-                    "statusCode": {
-                      "type": "number"
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 3,
+                          "maxLength": 200
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 500
+                          }
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "createdAt",
+                        "updatedAt"
+                      ]
                     }
-                  },
-                  "required": [
-                    "success",
-                    "message",
-                    "statusCode"
                   ]
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users/{id}#salesforce#generic.customer": {
-      "get": {
-        "summary": "Retrieve a user or customer",
-        "tags": [
-          "Salesforce","Generic","User"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "id",
-            "in": "path"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["user", "customer", "admin", "guest", "moderator", "vendor", "partner", "employee", "manager", "developer", "tester", "analyst", "consultant", "contractor", "freelancer", "intern", "trainee", "executive", "director", "officer", "supervisor", "coordinator"]
-            },
-            "required": true,
-            "name": "x-model",
-            "in": "header",
-            "description": "Specify 'user' to return a User object or 'customer' to return a Customer object"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    { "$ref": "#/components/schemas/User" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" },
-                    { "$ref": "#/components/schemas/Customer" }
-                  ],
-                  "discriminator": {
-                    "propertyName": "object",
-                    "mapping": {
-                      "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer",
-                      "admin": "#/components/schemas/Customer",
-                      "guest": "#/components/schemas/Customer",
-                      "moderator": "#/components/schemas/Customer",
-                      "vendor": "#/components/schemas/Customer",
-                      "partner": "#/components/schemas/Customer",
-                      "employee": "#/components/schemas/Customer",
-                      "manager": "#/components/schemas/Customer",
-                      "developer": "#/components/schemas/Customer",
-                      "tester": "#/components/schemas/Customer",
-                      "analyst": "#/components/schemas/Customer",
-                      "consultant": "#/components/schemas/Customer",
-                      "contractor": "#/components/schemas/Customer",
-                      "freelancer": "#/components/schemas/Customer",
-                      "intern": "#/components/schemas/Customer",
-                      "trainee": "#/components/schemas/Customer",
-                      "executive": "#/components/schemas/Customer",
-                      "director": "#/components/schemas/Customer",
-                      "officer": "#/components/schemas/Customer",
-                      "supervisor": "#/components/schemas/Customer",
-                      "coordinator": "#/components/schemas/Customer"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/users#header[x-model]=customer": {
-      "post": {
-        "summary": "Create a user or customer",
-        "tags": [
-          "Generic","User"
-        ],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["customer"],
-              "default": "customer"
-            },
-            "required": true,
-            "name": "x-model",
-            "in": "header",
-            "description": "Specify 'customer' to create a Customer object"
-          },
-        {
-          "schema": {
-            "type": "string",
-            "enum": ["user", "customer"]
-          },
-          "required": true,
-          "name": "query",
-          "in": "query",
-          "description": "Specify 'user' to create a User object or 'customer' to create a Customer object"
-        }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  { "$ref": "#/components/schemas/User" },
-                  { "$ref": "#/components/schemas/Customer" }
-                ],
-                "discriminator": {
-                  "propertyName": "object",
-                  "mapping": {
-                    "user": "#/components/schemas/User",
-                    "customer": "#/components/schemas/Customer"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "oneOf": [
-                    { "$ref": "#/components/schemas/User" },
-                    { "$ref": "#/components/schemas/Customer" }
-                  ],
-                  "discriminator": {
-                    "propertyName": "object",
-                    "mapping": {
-                      "user": "#/components/schemas/User",
-                      "customer": "#/components/schemas/Customer"
-                    }
-                  }
                 }
               }
             }
