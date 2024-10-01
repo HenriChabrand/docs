@@ -1,7 +1,7 @@
 {
   "openapi": ["api-reference/openapi.json"],
   "api": {
-    "baseUrl": "https://api.example.com",
+    "baseUrl": "http://localhost:3089",
     "auth": {
       "method": "bearer"
     }
