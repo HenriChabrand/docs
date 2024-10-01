@@ -4,55 +4,25 @@
     "version": "1.0.0",
     "title": "Swagger API"
   },
-  "externalDocs": {
-    "description": "View the raw OpenAPI Specification in JSON format",
-    "url": "/swagger.json"
-  },
   "components": {
-    "schemas": {
-      "Customer": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 200
-          },
-          "metadata": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 500
-            }
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "createdAt",
-          "updatedAt"
-        ]
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      },
+      "ApiSecretAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-secret"
       }
-    },
-    "parameters": {}
+    }
   },
   "paths": {
-    "/v1/customers": {
+    "/v1/connections": {
       "get": {
-        "summary": "List customers",
-        "tags": [
-          "Customer"
-        ],
+        "summary": "List connections",
+        "tags": ["Connection"],
         "parameters": [
           {
             "schema": {
@@ -82,21 +52,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 3,
-                  "maxLength": 200
+                "connectorId": {
+                  "type": "string"
                 },
-                "metadata": {
-                  "type": "object",
-                  "additionalProperties": {
-                    "type": "string",
-                    "minLength": 1,
-                    "maxLength": 500
-                  }
+                "status": {
+                  "type": "string"
                 }
-              },
-              "additionalProperties": false
+              }
             },
             "required": false,
             "name": "filter",
@@ -131,28 +93,31 @@
                                 "properties": {
                                   "object": {
                                     "type": "string",
-                                    "default": "customer"
+                                    "default": "connection"
                                   }
                                 }
                               },
                               {
                                 "type": "object",
                                 "properties": {
-                                  "id": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["connection"]
+                                  },
+                                  "connectorId": {
                                     "type": "string"
                                   },
-                                  "name": {
-                                    "type": "string",
-                                    "minLength": 3,
-                                    "maxLength": 200
+                                  "ownerId": {
+                                    "type": "string"
                                   },
-                                  "metadata": {
-                                    "type": "object",
-                                    "additionalProperties": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "maxLength": 500
+                                  "operations": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
                                     }
+                                  },
+                                  "status": {
+                                    "type": "string"
                                   },
                                   "createdAt": {
                                     "type": "string"
@@ -162,11 +127,15 @@
                                   }
                                 },
                                 "required": [
-                                  "id",
-                                  "name",
+                                  "object",
+                                  "connectorId",
+                                  "ownerId",
+                                  "operations",
+                                  "status",
                                   "createdAt",
                                   "updatedAt"
-                                ]
+                                ],
+                                "additionalProperties": false
                               }
                             ]
                           }
@@ -176,9 +145,123 @@
                           "nullable": true
                         }
                       },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/connections/{connectorId}/{ownerId}": {
+      "get": {
+        "summary": "Retrieve a connection",
+        "tags": ["Connection"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "ownerId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "connection"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["connection"]
+                        },
+                        "connectorId": {
+                          "type": "string"
+                        },
+                        "ownerId": {
+                          "type": "string"
+                        },
+                        "operations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
                       "required": [
-                        "data",
-                        "next"
+                        "object",
+                        "connectorId",
+                        "ownerId",
+                        "operations",
+                        "status",
+                        "createdAt",
+                        "updatedAt"
                       ],
                       "additionalProperties": false
                     }
@@ -186,13 +269,60 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
       },
       "post": {
-        "summary": "Create a customer",
-        "tags": [
-          "Customer"
+        "summary": "Create a connection",
+        "tags": ["Connection"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "ownerId",
+            "in": "path"
+          }
         ],
         "requestBody": {
           "content": {
@@ -200,23 +330,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string",
-                    "minLength": 3,
-                    "maxLength": 200
-                  },
-                  "metadata": {
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string",
-                      "minLength": 1,
-                      "maxLength": 500
+                  "operations": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
                     }
                   }
                 },
-                "required": [
-                  "name"
-                ],
+                "required": ["operations"],
                 "additionalProperties": false
               }
             }
@@ -234,28 +355,31 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "default": "customer"
+                          "default": "connection"
                         }
                       }
                     },
                     {
                       "type": "object",
                       "properties": {
-                        "id": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["connection"]
+                        },
+                        "connectorId": {
                           "type": "string"
                         },
-                        "name": {
-                          "type": "string",
-                          "minLength": 3,
-                          "maxLength": 200
+                        "ownerId": {
+                          "type": "string"
                         },
-                        "metadata": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string",
-                            "minLength": 1,
-                            "maxLength": 500
+                        "operations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
                           }
+                        },
+                        "status": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string"
@@ -265,36 +389,92 @@
                         }
                       },
                       "required": [
-                        "id",
-                        "name",
+                        "object",
+                        "connectorId",
+                        "ownerId",
+                        "operations",
+                        "status",
                         "createdAt",
                         "updatedAt"
-                      ]
+                      ],
+                      "additionalProperties": false
                     }
                   ]
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
           }
-        }
-      }
-    },
-    "/v1/customers/{id}": {
-      "get": {
-        "summary": "Retrieve a customer",
-        "tags": [
-          "Customer"
-        ],
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update a connection",
+        "tags": ["Connection"],
         "parameters": [
           {
             "schema": {
               "type": "string"
             },
             "required": true,
-            "name": "id",
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "ownerId",
             "in": "path"
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "operations": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -307,28 +487,31 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "default": "customer"
+                          "default": "connection"
                         }
                       }
                     },
                     {
                       "type": "object",
                       "properties": {
-                        "id": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["connection"]
+                        },
+                        "connectorId": {
                           "type": "string"
                         },
-                        "name": {
-                          "type": "string",
-                          "minLength": 3,
-                          "maxLength": 200
+                        "ownerId": {
+                          "type": "string"
                         },
-                        "metadata": {
-                          "type": "object",
-                          "additionalProperties": {
-                            "type": "string",
-                            "minLength": 1,
-                            "maxLength": 500
+                        "operations": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
                           }
+                        },
+                        "status": {
+                          "type": "string"
                         },
                         "createdAt": {
                           "type": "string"
@@ -338,19 +521,441 @@
                         }
                       },
                       "required": [
-                        "id",
-                        "name",
+                        "object",
+                        "connectorId",
+                        "ownerId",
+                        "operations",
+                        "status",
                         "createdAt",
                         "updatedAt"
-                      ]
+                      ],
+                      "additionalProperties": false
                     }
                   ]
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
           }
-        }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete a connection",
+        "tags": ["Connection"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "ownerId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/connections/{connectorId}/{ownerId}/authorization": {
+      "post": {
+        "summary": "Authorize a connection",
+        "tags": ["Connection"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "ownerId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "required": false,
+            "name": "redirectUrl",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "settings": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "connection.authorization"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["connection.authorization"]
+                        },
+                        "connectorId": {
+                          "type": "string"
+                        },
+                        "ownerId": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "authorizationUrl": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["object", "connectorId", "ownerId", "status"]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/callback/{connectorId}": {
+      "get": {
+        "summary": "Handle connector OAuth callback",
+        "tags": ["Callback"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "code",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "state",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Moved Temporarily",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["message"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/proxy/{connectorId}/{ownerId}": {
+      "post": {
+        "summary": "Proxy request to connector",
+        "tags": ["Proxy"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "connectorId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "ownerId",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "method": {
+                    "type": "string",
+                    "enum": ["GET", "POST", "PUT", "PATCH", "DELETE"]
+                  },
+                  "data": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "nullable": true
+                    }
+                  },
+                  "query": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "nullable": true
+                    }
+                  },
+                  "headers": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["path", "method"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
       }
     }
+  },
+  "externalDocs": {
+    "description": "View the raw OpenAPI Specification in JSON format",
+    "url": "/swagger.json"
   }
 }
