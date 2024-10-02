@@ -1,7 +1,7 @@
 {
   "openapi": ["api-reference/openapi.json"],
   "api": {
-    "baseUrl": "http://localhost:3089",
+    "baseUrl": "https://morph-api-staging.onrender.com",
     "auth": {
       "method": "bearer"
     }
