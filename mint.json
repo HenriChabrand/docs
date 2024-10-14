@@ -61,7 +61,7 @@
   ],
   "navigation": [
     {
-      "group": "Connection",
+      "group": "Connections",
       "pages": [
         "api-reference/connection/list-connections",
         "api-reference/connection/retrieve-a-connection",
@@ -72,10 +72,29 @@
       ]
     },
     {
-      "group": "Resource",
+      "group": "Resources",
       "pages": [
-        "api-reference/resource/retrieve-a-resource",
-        "api-reference/resource/list-a-resource"
+        {
+          "group": "Generic Contact",
+          "pages": [
+            "api-reference/resource/retrieve-a-genericcontact-resource",
+            "api-reference/resource/list-genericcontact-resources"
+          ]
+        },
+        {
+          "group": "Generic Company",
+          "pages": [
+            "api-reference/resource/retrieve-a-genericcompany-resource",
+            "api-reference/resource/list-genericcompany-resources"
+          ]
+        },
+        {
+          "group": "Generic User",
+          "pages": [
+            "api-reference/resource/retrieve-a-genericuser-resource",
+            "api-reference/resource/list-genericuser-resources"
+          ]
+        }
       ]
     },
     {

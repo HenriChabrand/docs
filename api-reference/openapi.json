@@ -873,20 +873,11 @@
         ]
       }
     },
-    "/v1/resources/{entityId}/{resourceId}": {
+    "/v1/resources/generic.contact/{resourceId}": {
       "get": {
-        "summary": "Retrieve a resource",
+        "summary": "Retrieve a generic.contact resource",
         "tags": ["Resource"],
         "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["generic.contact", "generic.company", "generic.user"]
-            },
-            "required": true,
-            "name": "entityId",
-            "in": "path"
-          },
           {
             "schema": {
               "type": "string"
@@ -944,8 +935,32 @@
                         },
                         "fields": {
                           "type": "object",
-                          "additionalProperties": {
-                            "nullable": true
+                          "properties": {
+                            "firstName": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "First name"
+                            },
+                            "lastName": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "Last name"
+                            },
+                            "email": {
+                              "type": "string",
+                              "minLength": 5,
+                              "maxLength": 250,
+                              "format": "email",
+                              "description": "Email"
+                            },
+                            "phone": {
+                              "type": "string",
+                              "minLength": 5,
+                              "maxLength": 20,
+                              "description": "Phone number"
+                            }
                           }
                         },
                         "createdAt": {
@@ -1004,20 +1019,11 @@
         ]
       }
     },
-    "/v1/resources/{entityId}": {
+    "/v1/resources/generic.contact": {
       "get": {
-        "summary": "List a resource",
+        "summary": "List generic.contact resources",
         "tags": ["Resource"],
         "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["generic.contact", "generic.company", "generic.user"]
-            },
-            "required": true,
-            "name": "entityId",
-            "in": "path"
-          },
           {
             "schema": {
               "anyOf": [
@@ -1142,8 +1148,715 @@
                                   },
                                   "fields": {
                                     "type": "object",
-                                    "additionalProperties": {
-                                      "nullable": true
+                                    "properties": {
+                                      "firstName": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "First name"
+                                      },
+                                      "lastName": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "Last name"
+                                      },
+                                      "email": {
+                                        "type": "string",
+                                        "minLength": 5,
+                                        "maxLength": 250,
+                                        "format": "email",
+                                        "description": "Email"
+                                      },
+                                      "phone": {
+                                        "type": "string",
+                                        "minLength": 5,
+                                        "maxLength": 20,
+                                        "description": "Phone number"
+                                      }
+                                    }
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "object",
+                                  "type",
+                                  "id",
+                                  "fields",
+                                  "createdAt",
+                                  "updatedAt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/generic.company/{resourceId}": {
+      "get": {
+        "summary": "Retrieve a generic.company resource",
+        "tags": ["Resource"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
+            },
+            "required": true,
+            "name": "x-connector-id",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "x-owner-id",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "Name"
+                            },
+                            "website": {
+                              "type": "string",
+                              "format": "uri",
+                              "description": "Website"
+                            }
+                          },
+                          "required": ["name"]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "object",
+                        "type",
+                        "id",
+                        "fields",
+                        "createdAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/generic.company": {
+      "get": {
+        "summary": "List generic.company resources",
+        "tags": ["Resource"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "Name"
+                },
+                "website": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "Website"
+                }
+              },
+              "required": ["name"]
+            },
+            "required": false,
+            "name": "filters",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
+            },
+            "required": true,
+            "name": "x-connector-id",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "x-owner-id",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "resource"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "Name"
+                                      },
+                                      "website": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Website"
+                                      }
+                                    },
+                                    "required": ["name"]
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "object",
+                                  "type",
+                                  "id",
+                                  "fields",
+                                  "createdAt",
+                                  "updatedAt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/generic.user/{resourceId}": {
+      "get": {
+        "summary": "Retrieve a generic.user resource",
+        "tags": ["Resource"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
+            },
+            "required": true,
+            "name": "x-connector-id",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "x-owner-id",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "properties": {
+                            "firstName": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "First name"
+                            },
+                            "lastName": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "Last name"
+                            },
+                            "email": {
+                              "type": "string",
+                              "minLength": 5,
+                              "maxLength": 250,
+                              "format": "email",
+                              "description": "Email"
+                            }
+                          }
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "object",
+                        "type",
+                        "id",
+                        "fields",
+                        "createdAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/generic.user": {
+      "get": {
+        "summary": "List generic.user resources",
+        "tags": ["Resource"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "First name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "Last name"
+                },
+                "email": {
+                  "type": "string",
+                  "minLength": 5,
+                  "maxLength": 250,
+                  "format": "email",
+                  "description": "Email"
+                }
+              }
+            },
+            "required": false,
+            "name": "filters",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
+            },
+            "required": true,
+            "name": "x-connector-id",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "x-owner-id",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "resource"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "type": "object",
+                                    "properties": {
+                                      "firstName": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "First name"
+                                      },
+                                      "lastName": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "Last name"
+                                      },
+                                      "email": {
+                                        "type": "string",
+                                        "minLength": 5,
+                                        "maxLength": 250,
+                                        "format": "email",
+                                        "description": "Email"
+                                      }
                                     }
                                   },
                                   "createdAt": {
