@@ -61,10 +61,6 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
-    },
-    {
       "group": "Connection",
       "pages": [
         "api-reference/connection/list-connections",
@@ -76,12 +72,15 @@
       ]
     },
     {
-      "group": "Proxy",
-      "pages": ["api-reference/proxy/proxy-request-to-connector"]
+      "group": "Resource",
+      "pages": [
+        "api-reference/resource/retrieve-a-resource",
+        "api-reference/resource/list-a-resource"
+      ]
     },
     {
-      "group": "Callback",
-      "pages": ["api-reference/callback/handle-connector-oauth-callback"]
+      "group": "Proxy",
+      "pages": ["api-reference/proxy/proxy-request-to-connector"]
     }
   ],
   "footerSocials": {

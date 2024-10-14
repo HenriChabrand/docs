@@ -61,7 +61,7 @@
               }
             },
             "required": false,
-            "name": "filter",
+            "name": "filters",
             "in": "query"
           }
         ],
@@ -768,107 +768,27 @@
         ]
       }
     },
-    "/v1/callback/{connectorId}": {
-      "get": {
-        "summary": "Handle connector OAuth callback",
-        "tags": ["Callback"],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "connectorId",
-            "in": "path"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "code",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "state",
-            "in": "query"
-          }
-        ],
-        "responses": {
-          "302": {
-            "description": "Moved Temporarily",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "required": ["message"]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string",
-                      "enum": [
-                        "MORPH::BAD_REQUEST",
-                        "MORP::UNAUTHORIZED",
-                        "MORP::RESOURCE_NOT_FOUND"
-                      ]
-                    },
-                    "message": {
-                      "type": "string",
-                      "default": ""
-                    }
-                  },
-                  "required": ["error"]
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKeyAuth": [],
-            "ApiSecretAuth": []
-          }
-        ]
-      }
-    },
-    "/v1/proxy/{connectorId}/{ownerId}": {
+    "/v1/proxy": {
       "post": {
         "summary": "Proxy request to connector",
         "tags": ["Proxy"],
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
             },
             "required": true,
-            "name": "connectorId",
-            "in": "path"
+            "name": "x-connector-id",
+            "in": "header"
           },
           {
             "schema": {
               "type": "string"
             },
             "required": true,
-            "name": "ownerId",
-            "in": "path"
+            "name": "x-owner-id",
+            "in": "header"
           }
         ],
         "requestBody": {
@@ -921,6 +841,346 @@
           },
           "400": {
             "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/{entityId}/{resourceId}": {
+      "get": {
+        "summary": "Retrieve a resource",
+        "tags": ["Resource"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["generic.contact", "generic.company", "generic.user"]
+            },
+            "required": true,
+            "name": "entityId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
+            },
+            "required": true,
+            "name": "x-connector-id",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "x-owner-id",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "nullable": true
+                          }
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "object",
+                        "type",
+                        "id",
+                        "fields",
+                        "createdAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_REQUEST",
+                        "MORP::UNAUTHORIZED",
+                        "MORP::RESOURCE_NOT_FOUND"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/{entityId}": {
+      "get": {
+        "summary": "List a resource",
+        "tags": ["Resource"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["generic.contact", "generic.company", "generic.user"]
+            },
+            "required": true,
+            "name": "entityId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "First name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "Last name"
+                },
+                "email": {
+                  "type": "string",
+                  "minLength": 5,
+                  "maxLength": 250,
+                  "format": "email",
+                  "description": "Email"
+                },
+                "phone": {
+                  "type": "string",
+                  "minLength": 5,
+                  "maxLength": 20,
+                  "description": "Phone number"
+                }
+              }
+            },
+            "required": false,
+            "name": "filters",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": ["hubspot", "pipedrive"]
+            },
+            "required": true,
+            "name": "x-connector-id",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "x-owner-id",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "resource"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                      "nullable": true
+                                    }
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "object",
+                                  "type",
+                                  "id",
+                                  "fields",
+                                  "createdAt",
+                                  "updatedAt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
