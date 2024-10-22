@@ -38,8 +38,8 @@
       "url": "api-reference"
     },
     {
-      "name": "API Models Reference",
-      "url": "api-reference-pet"
+      "name": "API Resources Reference",
+      "url": "api-reference-resources"
     }
   ],
   "anchors": [
@@ -61,14 +61,50 @@
   ],
   "navigation": [
     {
-      "group": "Connections",
+      "group": "Generic Contact",
       "pages": [
-        "api-reference/connection/list-connections",
-        "api-reference/connection/retrieve-a-connection",
-        "api-reference/connection/create-a-connection",
-        "api-reference/connection/delete-a-connection",
-        "api-reference/connection/update-a-connection",
-        "api-reference/connection/authorize-a-connection"
+        "api-reference-resources/resource/retrieve-a-genericcontact-resource",
+        "api-reference-resources/resource/update-a-genericcontact-resource",
+        "api-reference-resources/resource/list-genericcontact-resources",
+        "api-reference-resources/resource/create-a-genericcontact-resource"
+      ]
+    },
+    {
+      "group": "Generic Company",
+      "pages": [
+        "api-reference-resources/resource/retrieve-a-genericcompany-resource",
+        "api-reference-resources/resource/update-a-genericcompany-resource",
+        "api-reference-resources/resource/list-genericcompany-resources",
+        "api-reference-resources/resource/create-a-genericcompany-resource"
+      ]
+    },
+    {
+      "group": "Generic User",
+      "pages": [
+        "api-reference-resources/resource/retrieve-a-genericuser-resource",
+        "api-reference-resources/resource/update-a-genericuser-resource",
+        "api-reference-resources/resource/list-genericuser-resources",
+        "api-reference-resources/resource/create-a-genericuser-resource"
+      ]
+    },
+    {
+      "group": "Crm Opportunity",
+      "pages": [
+        "api-reference-resources/resource/retrieve-a-crmopportunity-resource",
+        "api-reference-resources/resource/update-a-crmopportunity-resource",
+        "api-reference-resources/resource/list-crmopportunity-resources",
+        "api-reference-resources/resource/create-a-crmopportunity-resource"
+      ]
+    },
+    {
+      "group": "Connection",
+      "pages": [
+        "api-reference-resources/connection/list-connections",
+        "api-reference-resources/connection/retrieve-a-connection",
+        "api-reference-resources/connection/create-a-connection",
+        "api-reference-resources/connection/delete-a-connection",
+        "api-reference-resources/connection/update-a-connection",
+        "api-reference-resources/connection/authorize-a-connection"
       ]
     },
     {
@@ -78,21 +114,36 @@
           "group": "Generic Contact",
           "pages": [
             "api-reference/resource/retrieve-a-genericcontact-resource",
-            "api-reference/resource/list-genericcontact-resources"
+            "api-reference/resource/update-a-genericcontact-resource",
+            "api-reference/resource/list-genericcontact-resources",
+            "api-reference/resource/create-a-genericcontact-resource"
           ]
         },
         {
           "group": "Generic Company",
           "pages": [
             "api-reference/resource/retrieve-a-genericcompany-resource",
-            "api-reference/resource/list-genericcompany-resources"
+            "api-reference/resource/update-a-genericcompany-resource",
+            "api-reference/resource/list-genericcompany-resources",
+            "api-reference/resource/create-a-genericcompany-resource"
           ]
         },
         {
           "group": "Generic User",
           "pages": [
             "api-reference/resource/retrieve-a-genericuser-resource",
-            "api-reference/resource/list-genericuser-resources"
+            "api-reference/resource/update-a-genericuser-resource",
+            "api-reference/resource/list-genericuser-resources",
+            "api-reference/resource/create-a-genericuser-resource"
+          ]
+        },
+        {
+          "group": "Crm Opportunity",
+          "pages": [
+            "api-reference/resource/retrieve-a-crmopportunity-resource",
+            "api-reference/resource/update-a-crmopportunity-resource",
+            "api-reference/resource/list-crmopportunity-resources",
+            "api-reference/resource/create-a-crmopportunity-resource"
           ]
         }
       ]
