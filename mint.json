@@ -7,19 +7,19 @@
     }
   },
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Morph_",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#5e4dff",
+    "light": "#fcfcfc",
+    "dark": "#1c1b33",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#5e4dff",
+      "to": "#361dd0"
     }
   },
   "topbarLinks": [
@@ -36,10 +36,6 @@
     {
       "name": "API Reference",
       "url": "api-reference"
-    },
-    {
-      "name": "API Resources Reference",
-      "url": "api-reference-resources"
     }
   ],
   "anchors": [
@@ -49,14 +45,14 @@
       "url": "https://mintlify.com/docs"
     },
     {
+      "name": "CDK",
+      "icon": "newspaper",
+      "url": "https://mintlify.com/blog"
+    },
+    {
       "name": "Community",
       "icon": "slack",
       "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
     }
   ],
   "navigation": [
@@ -76,7 +72,7 @@
       "pages": ["api-reference/proxy/proxy-request-to-connector"]
     },
     {
-      "group": "Generic",
+      "group": "Generic Resources",
       "pages": [
         {
           "group": "Company",
@@ -108,7 +104,7 @@
       ]
     },
     {
-      "group": "Crm",
+      "group": "Crm Resources",
       "pages": [
         {
           "group": "Opportunity",
