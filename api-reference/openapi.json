@@ -15,6 +15,16 @@
         "type": "apiKey",
         "in": "header",
         "name": "x-api-secret"
+      },
+      "ConnectorId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-connector-id"
+      },
+      "OwnerId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-owner-id"
       }
     }
   },
@@ -957,25 +967,7 @@
       "post": {
         "summary": "Proxy request to connector",
         "tags": ["Proxy"],
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
-          }
-        ],
+        "parameters": [],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1083,15 +1075,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/genericCompany/{resourceId}": {
       "get": {
-        "summary": "Retrieve a genericCompany resource",
-        "tags": ["Resource"],
+        "summary": "Retrieve Company",
+        "tags": ["Company"],
         "parameters": [
           {
             "schema": {
@@ -1139,23 +1133,6 @@
             "required": false,
             "name": "expand",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -1300,13 +1277,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "patch": {
-        "summary": "Update a genericCompany resource",
-        "tags": ["Resource"],
+        "summary": "Update Company",
+        "tags": ["Company"],
         "parameters": [
           {
             "schema": {
@@ -1331,23 +1310,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -1536,15 +1498,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/genericCompany": {
       "get": {
-        "summary": "List genericCompany resources",
-        "tags": ["Resource"],
+        "summary": "List Company",
+        "tags": ["Company"],
         "parameters": [
           {
             "schema": {
@@ -1591,23 +1555,6 @@
             "required": false,
             "name": "filters",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -1779,13 +1726,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "post": {
-        "summary": "Create a genericCompany resource",
-        "tags": ["Resource"],
+        "summary": "Create Company",
+        "tags": ["Company"],
         "parameters": [
           {
             "schema": {
@@ -1802,23 +1751,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -2008,15 +1940,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/genericContact/{resourceId}": {
       "get": {
-        "summary": "Retrieve a genericContact resource",
-        "tags": ["Resource"],
+        "summary": "Retrieve Contact",
+        "tags": ["Contact"],
         "parameters": [
           {
             "schema": {
@@ -2076,23 +2010,6 @@
             "required": false,
             "name": "expand",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -2256,13 +2173,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "patch": {
-        "summary": "Update a genericContact resource",
-        "tags": ["Resource"],
+        "summary": "Update Contact",
+        "tags": ["Contact"],
         "parameters": [
           {
             "schema": {
@@ -2287,23 +2206,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -2531,15 +2433,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/genericContact": {
       "get": {
-        "summary": "List genericContact resources",
-        "tags": ["Resource"],
+        "summary": "List Contact",
+        "tags": ["Contact"],
         "parameters": [
           {
             "schema": {
@@ -2605,23 +2509,6 @@
             "required": false,
             "name": "filters",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -2812,13 +2699,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "post": {
-        "summary": "Create a genericContact resource",
-        "tags": ["Resource"],
+        "summary": "Create Contact",
+        "tags": ["Contact"],
         "parameters": [
           {
             "schema": {
@@ -2835,23 +2724,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -3079,15 +2951,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/genericUser/{resourceId}": {
       "get": {
-        "summary": "Retrieve a genericUser resource",
-        "tags": ["Resource"],
+        "summary": "Retrieve User",
+        "tags": ["User"],
         "parameters": [
           {
             "schema": {
@@ -3135,23 +3009,6 @@
             "required": false,
             "name": "expand",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -3303,13 +3160,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "patch": {
-        "summary": "Update a genericUser resource",
-        "tags": ["Resource"],
+        "summary": "Update User",
+        "tags": ["User"],
         "parameters": [
           {
             "schema": {
@@ -3334,23 +3193,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -3554,15 +3396,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/genericUser": {
       "get": {
-        "summary": "List genericUser resources",
-        "tags": ["Resource"],
+        "summary": "List User",
+        "tags": ["User"],
         "parameters": [
           {
             "schema": {
@@ -3616,23 +3460,6 @@
             "required": false,
             "name": "filters",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -3811,13 +3638,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "post": {
-        "summary": "Create a genericUser resource",
-        "tags": ["Resource"],
+        "summary": "Create User",
+        "tags": ["User"],
         "parameters": [
           {
             "schema": {
@@ -3834,23 +3663,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -4054,15 +3866,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/crmOpportunity/{resourceId}": {
       "get": {
-        "summary": "Retrieve a crmOpportunity resource",
-        "tags": ["Resource"],
+        "summary": "Retrieve Opportunity",
+        "tags": ["Opportunity"],
         "parameters": [
           {
             "schema": {
@@ -4081,11 +3895,11 @@
                     "type": "string",
                     "enum": [
                       "name",
-                      "description",
                       "amount",
                       "currency",
-                      "win_probability",
-                      "closed_at",
+                      "stage",
+                      "pipeline",
+                      "owner",
                       "contacts",
                       "companies"
                     ]
@@ -4109,11 +3923,11 @@
                     "type": "string",
                     "enum": [
                       "name",
-                      "description",
                       "amount",
                       "currency",
-                      "win_probability",
-                      "closed_at",
+                      "stage",
+                      "pipeline",
+                      "owner",
                       "contacts",
                       "companies"
                     ]
@@ -4128,23 +3942,6 @@
             "required": false,
             "name": "expand",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -4185,10 +3982,6 @@
                               "maxLength": 250,
                               "description": "Opportunity name"
                             },
-                            "description": {
-                              "type": "string",
-                              "description": "Opportunity description"
-                            },
                             "amount": {
                               "type": "number",
                               "minimum": 0,
@@ -4200,15 +3993,92 @@
                               "maxLength": 3,
                               "description": "Currency code"
                             },
-                            "win_probability": {
-                              "type": "number",
-                              "minimum": 0,
-                              "maximum": 100,
-                              "description": "Win probability percentage"
+                            "stage": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "object": {
+                                  "type": "string",
+                                  "enum": ["resourceRef", "resource"]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "fields": {
+                                  "nullable": true
+                                },
+                                "rawResource": {
+                                  "nullable": true
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["id"],
+                              "description": "Stage of the opportunity"
                             },
-                            "closed_at": {
-                              "type": "string",
-                              "description": "Date when the opportunity was closed"
+                            "pipeline": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "object": {
+                                  "type": "string",
+                                  "enum": ["resourceRef", "resource"]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "fields": {
+                                  "nullable": true
+                                },
+                                "rawResource": {
+                                  "nullable": true
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["id"],
+                              "description": "Pipeline of the opportunity"
+                            },
+                            "owner": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "object": {
+                                  "type": "string",
+                                  "enum": ["resourceRef", "resource"]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "fields": {
+                                  "nullable": true
+                                },
+                                "rawResource": {
+                                  "nullable": true
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["id"],
+                              "description": "User that own the opportunity"
                             },
                             "contacts": {
                               "type": "array",
@@ -4274,7 +4144,8 @@
                               },
                               "description": "Associated companies"
                             }
-                          }
+                          },
+                          "required": ["name"]
                         },
                         "createdAt": {
                           "type": "string"
@@ -4372,13 +4243,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "patch": {
-        "summary": "Update a crmOpportunity resource",
-        "tags": ["Resource"],
+        "summary": "Update Opportunity",
+        "tags": ["Opportunity"],
         "parameters": [
           {
             "schema": {
@@ -4403,23 +4276,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -4434,10 +4290,6 @@
                     "maxLength": 250,
                     "description": "Opportunity name"
                   },
-                  "description": {
-                    "type": "string",
-                    "description": "Opportunity description"
-                  },
                   "amount": {
                     "type": "number",
                     "minimum": 0,
@@ -4449,15 +4301,92 @@
                     "maxLength": 3,
                     "description": "Currency code"
                   },
-                  "win_probability": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 100,
-                    "description": "Win probability percentage"
+                  "stage": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "Stage of the opportunity"
                   },
-                  "closed_at": {
-                    "type": "string",
-                    "description": "Date when the opportunity was closed"
+                  "pipeline": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "Pipeline of the opportunity"
+                  },
+                  "owner": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "User that own the opportunity"
                   },
                   "contacts": {
                     "type": "array",
@@ -4586,10 +4515,6 @@
                                   "maxLength": 250,
                                   "description": "Opportunity name"
                                 },
-                                "description": {
-                                  "type": "string",
-                                  "description": "Opportunity description"
-                                },
                                 "amount": {
                                   "type": "number",
                                   "minimum": 0,
@@ -4601,15 +4526,92 @@
                                   "maxLength": 3,
                                   "description": "Currency code"
                                 },
-                                "win_probability": {
-                                  "type": "number",
-                                  "minimum": 0,
-                                  "maximum": 100,
-                                  "description": "Win probability percentage"
+                                "stage": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "Stage of the opportunity"
                                 },
-                                "closed_at": {
-                                  "type": "string",
-                                  "description": "Date when the opportunity was closed"
+                                "pipeline": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "Pipeline of the opportunity"
+                                },
+                                "owner": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "User that own the opportunity"
                                 },
                                 "contacts": {
                                   "type": "array",
@@ -4675,7 +4677,8 @@
                                   },
                                   "description": "Associated companies"
                                 }
-                              }
+                              },
+                              "required": ["name"]
                             },
                             "createdAt": {
                               "type": "string"
@@ -4775,15 +4778,17 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
     },
     "/v1/resources/crmOpportunity": {
       "get": {
-        "summary": "List crmOpportunity resources",
-        "tags": ["Resource"],
+        "summary": "List Opportunity",
+        "tags": ["Opportunity"],
         "parameters": [
           {
             "schema": {
@@ -4819,10 +4824,6 @@
                   "maxLength": 250,
                   "description": "Opportunity name"
                 },
-                "description": {
-                  "type": "string",
-                  "description": "Opportunity description"
-                },
                 "amount": {
                   "type": "number",
                   "minimum": 0,
@@ -4834,15 +4835,92 @@
                   "maxLength": 3,
                   "description": "Currency code"
                 },
-                "win_probability": {
-                  "type": "number",
-                  "minimum": 0,
-                  "maximum": 100,
-                  "description": "Win probability percentage"
+                "stage": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "enum": ["resourceRef", "resource"]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "nullable": true
+                    },
+                    "rawResource": {
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"],
+                  "description": "Stage of the opportunity"
                 },
-                "closed_at": {
-                  "type": "string",
-                  "description": "Date when the opportunity was closed"
+                "pipeline": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "enum": ["resourceRef", "resource"]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "nullable": true
+                    },
+                    "rawResource": {
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"],
+                  "description": "Pipeline of the opportunity"
+                },
+                "owner": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "enum": ["resourceRef", "resource"]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "nullable": true
+                    },
+                    "rawResource": {
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"],
+                  "description": "User that own the opportunity"
                 },
                 "contacts": {
                   "type": "array",
@@ -4908,28 +4986,12 @@
                   },
                   "description": "Associated companies"
                 }
-              }
+              },
+              "required": ["name"]
             },
             "required": false,
             "name": "filters",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "responses": {
@@ -4986,10 +5048,6 @@
                                         "maxLength": 250,
                                         "description": "Opportunity name"
                                       },
-                                      "description": {
-                                        "type": "string",
-                                        "description": "Opportunity description"
-                                      },
                                       "amount": {
                                         "type": "number",
                                         "minimum": 0,
@@ -5001,15 +5059,92 @@
                                         "maxLength": 3,
                                         "description": "Currency code"
                                       },
-                                      "win_probability": {
-                                        "type": "number",
-                                        "minimum": 0,
-                                        "maximum": 100,
-                                        "description": "Win probability percentage"
+                                      "stage": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "object": {
+                                            "type": "string",
+                                            "enum": ["resourceRef", "resource"]
+                                          },
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "fields": {
+                                            "nullable": true
+                                          },
+                                          "rawResource": {
+                                            "nullable": true
+                                          },
+                                          "createdAt": {
+                                            "type": "string"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": ["id"],
+                                        "description": "Stage of the opportunity"
                                       },
-                                      "closed_at": {
-                                        "type": "string",
-                                        "description": "Date when the opportunity was closed"
+                                      "pipeline": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "object": {
+                                            "type": "string",
+                                            "enum": ["resourceRef", "resource"]
+                                          },
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "fields": {
+                                            "nullable": true
+                                          },
+                                          "rawResource": {
+                                            "nullable": true
+                                          },
+                                          "createdAt": {
+                                            "type": "string"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": ["id"],
+                                        "description": "Pipeline of the opportunity"
+                                      },
+                                      "owner": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "object": {
+                                            "type": "string",
+                                            "enum": ["resourceRef", "resource"]
+                                          },
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "fields": {
+                                            "nullable": true
+                                          },
+                                          "rawResource": {
+                                            "nullable": true
+                                          },
+                                          "createdAt": {
+                                            "type": "string"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": ["id"],
+                                        "description": "User that own the opportunity"
                                       },
                                       "contacts": {
                                         "type": "array",
@@ -5081,7 +5216,8 @@
                                         },
                                         "description": "Associated companies"
                                       }
-                                    }
+                                    },
+                                    "required": ["name"]
                                   },
                                   "createdAt": {
                                     "type": "string"
@@ -5190,13 +5326,15 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       },
       "post": {
-        "summary": "Create a crmOpportunity resource",
-        "tags": ["Resource"],
+        "summary": "Create Opportunity",
+        "tags": ["Opportunity"],
         "parameters": [
           {
             "schema": {
@@ -5213,23 +5351,6 @@
             "required": false,
             "name": "returnResource",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": ["hubspot", "pipedrive"]
-            },
-            "required": true,
-            "name": "x-connector-id",
-            "in": "header"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "required": true,
-            "name": "x-owner-id",
-            "in": "header"
           }
         ],
         "requestBody": {
@@ -5244,10 +5365,6 @@
                     "maxLength": 250,
                     "description": "Opportunity name"
                   },
-                  "description": {
-                    "type": "string",
-                    "description": "Opportunity description"
-                  },
                   "amount": {
                     "type": "number",
                     "minimum": 0,
@@ -5259,15 +5376,92 @@
                     "maxLength": 3,
                     "description": "Currency code"
                   },
-                  "win_probability": {
-                    "type": "number",
-                    "minimum": 0,
-                    "maximum": 100,
-                    "description": "Win probability percentage"
+                  "stage": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "Stage of the opportunity"
                   },
-                  "closed_at": {
-                    "type": "string",
-                    "description": "Date when the opportunity was closed"
+                  "pipeline": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "Pipeline of the opportunity"
+                  },
+                  "owner": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "User that own the opportunity"
                   },
                   "contacts": {
                     "type": "array",
@@ -5334,6 +5528,7 @@
                     "description": "Associated companies"
                   }
                 },
+                "required": ["name"],
                 "additionalProperties": false
               }
             }
@@ -5396,10 +5591,6 @@
                                   "maxLength": 250,
                                   "description": "Opportunity name"
                                 },
-                                "description": {
-                                  "type": "string",
-                                  "description": "Opportunity description"
-                                },
                                 "amount": {
                                   "type": "number",
                                   "minimum": 0,
@@ -5411,15 +5602,92 @@
                                   "maxLength": 3,
                                   "description": "Currency code"
                                 },
-                                "win_probability": {
-                                  "type": "number",
-                                  "minimum": 0,
-                                  "maximum": 100,
-                                  "description": "Win probability percentage"
+                                "stage": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "Stage of the opportunity"
                                 },
-                                "closed_at": {
-                                  "type": "string",
-                                  "description": "Date when the opportunity was closed"
+                                "pipeline": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "Pipeline of the opportunity"
+                                },
+                                "owner": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "User that own the opportunity"
                                 },
                                 "contacts": {
                                   "type": "array",
@@ -5485,7 +5753,8 @@
                                   },
                                   "description": "Associated companies"
                                 }
-                              }
+                              },
+                              "required": ["name"]
                             },
                             "createdAt": {
                               "type": "string"
@@ -5585,7 +5854,2139 @@
         "security": [
           {
             "ApiKeyAuth": [],
-            "ApiSecretAuth": []
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/crmStage/{resourceId}": {
+      "get": {
+        "summary": "Retrieve Stage",
+        "tags": ["Stage"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["name", "type", "pipeline"]
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "required": false,
+            "name": "fields",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["name", "type", "pipeline"]
+                  },
+                  "minItems": 1
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "required": false,
+            "name": "expand",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "Stage name"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
+                              "description": "Stage type"
+                            },
+                            "pipeline": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "object": {
+                                  "type": "string",
+                                  "enum": ["resourceRef", "resource"]
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "fields": {
+                                  "nullable": true
+                                },
+                                "rawResource": {
+                                  "nullable": true
+                                },
+                                "createdAt": {
+                                  "type": "string"
+                                },
+                                "updatedAt": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": ["id"],
+                              "description": "Associated pipeline"
+                            }
+                          },
+                          "required": ["name", "type"]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "warnings": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["code"]
+                          }
+                        }
+                      },
+                      "required": [
+                        "object",
+                        "type",
+                        "id",
+                        "fields",
+                        "createdAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Stage",
+        "tags": ["Stage"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false
+            },
+            "required": false,
+            "name": "returnResource",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 250,
+                    "description": "Stage name"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
+                    "description": "Stage type"
+                  },
+                  "pipeline": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "Associated pipeline"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resourceRef"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["object", "type", "id"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resource"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 250,
+                                  "description": "Stage name"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
+                                  "description": "Stage type"
+                                },
+                                "pipeline": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "Associated pipeline"
+                                }
+                              },
+                              "required": ["name", "type"]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "warnings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code"]
+                              }
+                            }
+                          },
+                          "required": [
+                            "object",
+                            "type",
+                            "id",
+                            "fields",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/crmStage": {
+      "get": {
+        "summary": "List Stage",
+        "tags": ["Stage"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "Stage name"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
+                  "description": "Stage type"
+                },
+                "pipeline": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "enum": ["resourceRef", "resource"]
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "fields": {
+                      "nullable": true
+                    },
+                    "rawResource": {
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["id"],
+                  "description": "Associated pipeline"
+                }
+              },
+              "required": ["name", "type"]
+            },
+            "required": false,
+            "name": "filters",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "resource"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "Stage name"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "OPEN",
+                                          "WON",
+                                          "LOST",
+                                          "UNKNOWN"
+                                        ],
+                                        "description": "Stage type"
+                                      },
+                                      "pipeline": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          },
+                                          "object": {
+                                            "type": "string",
+                                            "enum": ["resourceRef", "resource"]
+                                          },
+                                          "type": {
+                                            "type": "string"
+                                          },
+                                          "fields": {
+                                            "nullable": true
+                                          },
+                                          "rawResource": {
+                                            "nullable": true
+                                          },
+                                          "createdAt": {
+                                            "type": "string"
+                                          },
+                                          "updatedAt": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": ["id"],
+                                        "description": "Associated pipeline"
+                                      }
+                                    },
+                                    "required": ["name", "type"]
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  },
+                                  "warnings": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "code": {
+                                          "type": "string"
+                                        },
+                                        "message": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": ["code"]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "object",
+                                  "type",
+                                  "id",
+                                  "fields",
+                                  "createdAt",
+                                  "updatedAt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Stage",
+        "tags": ["Stage"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false
+            },
+            "required": false,
+            "name": "returnResource",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 250,
+                    "description": "Stage name"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
+                    "description": "Stage type"
+                  },
+                  "pipeline": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"],
+                    "description": "Associated pipeline"
+                  }
+                },
+                "required": ["name", "type"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resourceRef"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["object", "type", "id"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resource"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 250,
+                                  "description": "Stage name"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
+                                  "description": "Stage type"
+                                },
+                                "pipeline": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "object": {
+                                      "type": "string",
+                                      "enum": ["resourceRef", "resource"]
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    },
+                                    "fields": {
+                                      "nullable": true
+                                    },
+                                    "rawResource": {
+                                      "nullable": true
+                                    },
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": ["id"],
+                                  "description": "Associated pipeline"
+                                }
+                              },
+                              "required": ["name", "type"]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "warnings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code"]
+                              }
+                            }
+                          },
+                          "required": [
+                            "object",
+                            "type",
+                            "id",
+                            "fields",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/crmPipeline/{resourceId}": {
+      "get": {
+        "summary": "Retrieve Pipeline",
+        "tags": ["Pipeline"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["name", "stages"]
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "required": false,
+            "name": "fields",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["name", "stages"]
+                  },
+                  "minItems": 1
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "required": false,
+            "name": "expand",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "Pipeline name"
+                            },
+                            "stages": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resourceRef", "resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "nullable": true
+                                  },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["id"]
+                              },
+                              "description": "Stages in the pipeline"
+                            }
+                          },
+                          "required": ["name", "stages"]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "warnings": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["code"]
+                          }
+                        }
+                      },
+                      "required": [
+                        "object",
+                        "type",
+                        "id",
+                        "fields",
+                        "createdAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Pipeline",
+        "tags": ["Pipeline"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false
+            },
+            "required": false,
+            "name": "returnResource",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 250,
+                    "description": "Pipeline name"
+                  },
+                  "stages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": ["resourceRef", "resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "nullable": true
+                        },
+                        "rawResource": {
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["id"]
+                    },
+                    "description": "Stages in the pipeline"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resourceRef"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["object", "type", "id"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resource"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 250,
+                                  "description": "Pipeline name"
+                                },
+                                "stages": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "object": {
+                                        "type": "string",
+                                        "enum": ["resourceRef", "resource"]
+                                      },
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "fields": {
+                                        "nullable": true
+                                      },
+                                      "rawResource": {
+                                        "nullable": true
+                                      },
+                                      "createdAt": {
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": ["id"]
+                                  },
+                                  "description": "Stages in the pipeline"
+                                }
+                              },
+                              "required": ["name", "stages"]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "warnings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code"]
+                              }
+                            }
+                          },
+                          "required": [
+                            "object",
+                            "type",
+                            "id",
+                            "fields",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/crmPipeline": {
+      "get": {
+        "summary": "List Pipeline",
+        "tags": ["Pipeline"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "Pipeline name"
+                },
+                "stages": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "object": {
+                        "type": "string",
+                        "enum": ["resourceRef", "resource"]
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "fields": {
+                        "nullable": true
+                      },
+                      "rawResource": {
+                        "nullable": true
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "updatedAt": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["id"]
+                  },
+                  "description": "Stages in the pipeline"
+                }
+              },
+              "required": ["name", "stages"]
+            },
+            "required": false,
+            "name": "filters",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "resource"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "Pipeline name"
+                                      },
+                                      "stages": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string"
+                                            },
+                                            "object": {
+                                              "type": "string",
+                                              "enum": [
+                                                "resourceRef",
+                                                "resource"
+                                              ]
+                                            },
+                                            "type": {
+                                              "type": "string"
+                                            },
+                                            "fields": {
+                                              "nullable": true
+                                            },
+                                            "rawResource": {
+                                              "nullable": true
+                                            },
+                                            "createdAt": {
+                                              "type": "string"
+                                            },
+                                            "updatedAt": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": ["id"]
+                                        },
+                                        "description": "Stages in the pipeline"
+                                      }
+                                    },
+                                    "required": ["name", "stages"]
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  },
+                                  "warnings": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "code": {
+                                          "type": "string"
+                                        },
+                                        "message": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": ["code"]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "object",
+                                  "type",
+                                  "id",
+                                  "fields",
+                                  "createdAt",
+                                  "updatedAt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Pipeline",
+        "tags": ["Pipeline"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false
+            },
+            "required": false,
+            "name": "returnResource",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 250,
+                    "description": "Pipeline name"
+                  },
+                  "stages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": ["resourceRef", "resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "nullable": true
+                        },
+                        "rawResource": {
+                          "nullable": true
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["id"]
+                    },
+                    "description": "Stages in the pipeline"
+                  }
+                },
+                "required": ["name", "stages"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resourceRef"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["object", "type", "id"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resource"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 250,
+                                  "description": "Pipeline name"
+                                },
+                                "stages": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "object": {
+                                        "type": "string",
+                                        "enum": ["resourceRef", "resource"]
+                                      },
+                                      "type": {
+                                        "type": "string"
+                                      },
+                                      "fields": {
+                                        "nullable": true
+                                      },
+                                      "rawResource": {
+                                        "nullable": true
+                                      },
+                                      "createdAt": {
+                                        "type": "string"
+                                      },
+                                      "updatedAt": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": ["id"]
+                                  },
+                                  "description": "Stages in the pipeline"
+                                }
+                              },
+                              "required": ["name", "stages"]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "warnings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code"]
+                              }
+                            }
+                          },
+                          "required": [
+                            "object",
+                            "type",
+                            "id",
+                            "fields",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
           }
         ]
       }
