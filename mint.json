@@ -15,13 +15,22 @@
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#5e4dff",
-    "light": "#fcfcfc",
-    "dark": "#1c1b33",
+    "light": "#5e4dff",
+    "dark": "#5e4dff",
+    "background": {
+      "dark": "#1c1b33",
+      "light": "#fcfcfc"
+    },
     "anchors": {
       "from": "#5e4dff",
       "to": "#361dd0"
     }
   },
+  "theme": "prism",
+  "background": {
+    "style": "grid"
+  },
+  "modeToggle": { "default": "dark" },
   "topbarLinks": [
     {
       "name": "Support",
@@ -58,6 +67,8 @@
   "navigation": [
     {
       "group": "Connection",
+      "icon": "key",
+      "iconType": "duotone",
       "pages": [
         "api-reference/connection/list-connections",
         "api-reference/connection/retrieve-a-connection",
@@ -69,10 +80,14 @@
     },
     {
       "group": "Proxy",
+      "icon": "circle-nodes",
+      "iconType": "duotone",
       "pages": ["api-reference/proxy/proxy-request-to-connector"]
     },
     {
-      "group": "Generic Resources",
+      "group": "Generic Models",
+      "icon": "user-group",
+      "iconType": "duotone",
       "pages": [
         {
           "group": "Company",
@@ -100,11 +115,22 @@
             "api-reference/user/list-user",
             "api-reference/user/create-user"
           ]
+        },
+        {
+          "group": "Workspace",
+          "pages": [
+            "api-reference/workspace/retrieve-workspace",
+            "api-reference/workspace/update-workspace",
+            "api-reference/workspace/list-workspace",
+            "api-reference/workspace/create-workspace"
+          ]
         }
       ]
     },
     {
-      "group": "Crm Resources",
+      "group": "Crm Models",
+      "icon": "badge-dollar",
+      "iconType": "duotone",
       "pages": [
         {
           "group": "Opportunity",

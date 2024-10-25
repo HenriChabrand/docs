@@ -201,7 +201,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -235,7 +235,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive", "salesforce"]
             },
             "required": true,
             "name": "connectorId",
@@ -349,7 +349,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -381,7 +381,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive", "salesforce"]
             },
             "required": true,
             "name": "connectorId",
@@ -514,7 +514,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -546,7 +546,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive", "salesforce"]
             },
             "required": true,
             "name": "connectorId",
@@ -677,7 +677,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -709,7 +709,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive", "salesforce"]
             },
             "required": true,
             "name": "connectorId",
@@ -775,7 +775,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -809,7 +809,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive", "salesforce"]
             },
             "required": true,
             "name": "connectorId",
@@ -937,7 +937,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -1054,7 +1054,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -1102,7 +1102,7 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "enum": ["name", "website"]
+                    "enum": ["name"]
                   }
                 },
                 {
@@ -1121,7 +1121,7 @@
                   "type": "array",
                   "items": {
                     "type": "string",
-                    "enum": ["name", "website"]
+                    "enum": ["name"]
                   },
                   "minItems": 1
                 },
@@ -1172,11 +1172,6 @@
                               "minLength": 1,
                               "maxLength": 250,
                               "description": "Name"
-                            },
-                            "website": {
-                              "type": "string",
-                              "format": "uri",
-                              "description": "Website"
                             }
                           },
                           "required": ["name"]
@@ -1186,6 +1181,9 @@
                         },
                         "updatedAt": {
                           "type": "string"
+                        },
+                        "rawResource": {
+                          "nullable": true
                         },
                         "warnings": {
                           "type": "array",
@@ -1256,7 +1254,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -1323,11 +1321,6 @@
                     "minLength": 1,
                     "maxLength": 250,
                     "description": "Name"
-                  },
-                  "website": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Website"
                   }
                 },
                 "additionalProperties": false
@@ -1391,11 +1384,6 @@
                                   "minLength": 1,
                                   "maxLength": 250,
                                   "description": "Name"
-                                },
-                                "website": {
-                                  "type": "string",
-                                  "format": "uri",
-                                  "description": "Website"
                                 }
                               },
                               "required": ["name"]
@@ -1405,6 +1393,9 @@
                             },
                             "updatedAt": {
                               "type": "string"
+                            },
+                            "rawResource": {
+                              "nullable": true
                             },
                             "warnings": {
                               "type": "array",
@@ -1477,7 +1468,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -1543,11 +1534,6 @@
                   "minLength": 1,
                   "maxLength": 250,
                   "description": "Name"
-                },
-                "website": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "Website"
                 }
               },
               "required": ["name"]
@@ -1610,11 +1596,6 @@
                                         "minLength": 1,
                                         "maxLength": 250,
                                         "description": "Name"
-                                      },
-                                      "website": {
-                                        "type": "string",
-                                        "format": "uri",
-                                        "description": "Website"
                                       }
                                     },
                                     "required": ["name"]
@@ -1624,6 +1605,9 @@
                                   },
                                   "updatedAt": {
                                     "type": "string"
+                                  },
+                                  "rawResource": {
+                                    "nullable": true
                                   },
                                   "warnings": {
                                     "type": "array",
@@ -1705,7 +1689,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -1764,11 +1748,6 @@
                     "minLength": 1,
                     "maxLength": 250,
                     "description": "Name"
-                  },
-                  "website": {
-                    "type": "string",
-                    "format": "uri",
-                    "description": "Website"
                   }
                 },
                 "required": ["name"],
@@ -1833,11 +1812,6 @@
                                   "minLength": 1,
                                   "maxLength": 250,
                                   "description": "Name"
-                                },
-                                "website": {
-                                  "type": "string",
-                                  "format": "uri",
-                                  "description": "Website"
                                 }
                               },
                               "required": ["name"]
@@ -1847,6 +1821,9 @@
                             },
                             "updatedAt": {
                               "type": "string"
+                            },
+                            "rawResource": {
+                              "nullable": true
                             },
                             "warnings": {
                               "type": "array",
@@ -1919,7 +1896,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -2083,6 +2060,9 @@
                         "updatedAt": {
                           "type": "string"
                         },
+                        "rawResource": {
+                          "nullable": true
+                        },
                         "warnings": {
                           "type": "array",
                           "items": {
@@ -2152,7 +2132,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -2341,6 +2321,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -2412,7 +2395,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -2598,6 +2581,9 @@
                                   "updatedAt": {
                                     "type": "string"
                                   },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
                                   "warnings": {
                                     "type": "array",
                                     "items": {
@@ -2678,7 +2664,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -2859,6 +2845,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -2930,7 +2919,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -3070,6 +3059,9 @@
                         "updatedAt": {
                           "type": "string"
                         },
+                        "rawResource": {
+                          "nullable": true
+                        },
                         "warnings": {
                           "type": "array",
                           "items": {
@@ -3139,7 +3131,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -3304,6 +3296,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -3375,7 +3370,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -3537,6 +3532,9 @@
                                   "updatedAt": {
                                     "type": "string"
                                   },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
                                   "warnings": {
                                     "type": "array",
                                     "items": {
@@ -3617,7 +3615,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -3774,6 +3772,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -3845,7 +3846,849 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/genericWorkspace/{resourceId}": {
+      "get": {
+        "summary": "Retrieve Workspace",
+        "tags": ["Workspace"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["name"]
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "required": false,
+            "name": "fields",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["name"]
+                  },
+                  "minItems": 1
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "required": false,
+            "name": "expand",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "enum": ["resource"]
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 250,
+                              "description": "Name"
+                            }
+                          },
+                          "required": ["name"]
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        },
+                        "rawResource": {
+                          "nullable": true
+                        },
+                        "warnings": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["code"]
+                          }
+                        }
+                      },
+                      "required": [
+                        "object",
+                        "type",
+                        "id",
+                        "fields",
+                        "createdAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      },
+      "patch": {
+        "summary": "Update Workspace",
+        "tags": ["Workspace"],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "name": "resourceId",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false
+            },
+            "required": false,
+            "name": "returnResource",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 250,
+                    "description": "Name"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resourceRef"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["object", "type", "id"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resource"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 250,
+                                  "description": "Name"
+                                }
+                              },
+                              "required": ["name"]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "rawResource": {
+                              "nullable": true
+                            },
+                            "warnings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code"]
+                              }
+                            }
+                          },
+                          "required": [
+                            "object",
+                            "type",
+                            "id",
+                            "fields",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      }
+    },
+    "/v1/resources/genericWorkspace": {
+      "get": {
+        "summary": "List Workspace",
+        "tags": ["Workspace"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": 50
+            },
+            "required": false,
+            "name": "limit",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "name": "cursor",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 250,
+                  "description": "Name"
+                }
+              },
+              "required": ["name"]
+            },
+            "required": false,
+            "name": "filters",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "list"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "array",
+                          "items": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "default": "resource"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "object": {
+                                    "type": "string",
+                                    "enum": ["resource"]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "fields": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "maxLength": 250,
+                                        "description": "Name"
+                                      }
+                                    },
+                                    "required": ["name"]
+                                  },
+                                  "createdAt": {
+                                    "type": "string"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string"
+                                  },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
+                                  "warnings": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "code": {
+                                          "type": "string"
+                                        },
+                                        "message": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": ["code"]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "object",
+                                  "type",
+                                  "id",
+                                  "fields",
+                                  "createdAt",
+                                  "updatedAt"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        },
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": ["data", "next"],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
+                        "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
+                        "CONNECTOR::MAPPER::READ_FAILED",
+                        "CONNECTOR::UNKNOWN_ERROR",
+                        "CONNECTOR::BAD_CONFIGURATION"
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": [],
+            "ApiSecretAuth": [],
+            "ConnectorId": [],
+            "OwnerId": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create Workspace",
+        "tags": ["Workspace"],
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false
+            },
+            "required": false,
+            "name": "returnResource",
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 250,
+                    "description": "Name"
+                  }
+                },
+                "required": ["name"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "object": {
+                          "type": "string",
+                          "default": "resource"
+                        }
+                      }
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resourceRef"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["object", "type", "id"],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "object": {
+                              "type": "string",
+                              "enum": ["resource"]
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 250,
+                                  "description": "Name"
+                                }
+                              },
+                              "required": ["name"]
+                            },
+                            "createdAt": {
+                              "type": "string"
+                            },
+                            "updatedAt": {
+                              "type": "string"
+                            },
+                            "rawResource": {
+                              "nullable": true
+                            },
+                            "warnings": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "code": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["code"]
+                              }
+                            }
+                          },
+                          "required": [
+                            "object",
+                            "type",
+                            "id",
+                            "fields",
+                            "createdAt",
+                            "updatedAt"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "enum": [
+                        "MORPH::BAD_CONFIGURATION",
+                        "MORPH::UNKNOWN_ERROR",
+                        "MORPH::ADAPTER::CONNECTION_NOT_FOUND",
+                        "MORPH::ADAPTER::AUTHORIZATION_DATA_INVALID",
+                        "MORPH::SESSION::EXPIRED",
+                        "MORPH::SESSION::TOKEN_VALIDATION_FAILED",
+                        "MORPH::CONNECTION::MISSING_REQUIRED_AUTHORIZATION_SETTINGS",
+                        "MORPH::CONNECTION::AUTH_TYPE_NOT_SUPPORTED",
+                        "MORPH::CONNECTION::ACCESS_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESH_TOKEN_MISSIN",
+                        "MORPH::CONNECTION::REFRESHING_TOKEN_FAILED",
+                        "MORPH::CONNECTION::CREATION_FAILED",
+                        "MORPH::CONNECTION::UPDATE_FAILED",
+                        "MORPH::CONNECTION::NOT_FOUND",
+                        "MORPH::CONNECTION::RETRIEVE_FAILED",
+                        "MORPH::CONNECTION::DELETION_FAILED",
+                        "MORPH::CONNECTION::PROXY::REQUEST_FAILED",
+                        "MORPH::CONNECTION::PROXY::BAD_REQUEST",
+                        "MORPH::CONNECTION::PROXY::UNAUTHORIZED",
+                        "MORPH::CONNECTION::PROXY::FORBIDDEN",
+                        "MORPH::CONNECTION::PROXY::NOT_FOUND",
+                        "MORPH::CONNECTION::PROXY::RATE_LIMIT_EXCEEDED",
+                        "MORPH::CONNECTION::PROXY::SERVER_ERROR",
+                        "CONNECTOR::NOT_FOUND",
+                        "CONNECTOR::OPERATION::NOT_FOUND",
+                        "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
+                        "CONNECTOR::OPERATION::BAD_REQUEST",
+                        "CONNECTOR::OPERATION::SERVER_ERROR",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -4153,6 +4996,9 @@
                         "updatedAt": {
                           "type": "string"
                         },
+                        "rawResource": {
+                          "nullable": true
+                        },
                         "warnings": {
                           "type": "array",
                           "items": {
@@ -4222,7 +5068,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -4686,6 +5532,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -4757,7 +5606,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -5225,6 +6074,9 @@
                                   "updatedAt": {
                                     "type": "string"
                                   },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
                                   "warnings": {
                                     "type": "array",
                                     "items": {
@@ -5305,7 +6157,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -5762,6 +6614,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -5833,7 +6688,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -5995,6 +6850,9 @@
                         "updatedAt": {
                           "type": "string"
                         },
+                        "rawResource": {
+                          "nullable": true
+                        },
                         "warnings": {
                           "type": "array",
                           "items": {
@@ -6064,7 +6922,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -6272,6 +7130,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -6343,7 +7204,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -6554,6 +7415,9 @@
                                   "updatedAt": {
                                     "type": "string"
                                   },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
                                   "warnings": {
                                     "type": "array",
                                     "items": {
@@ -6634,7 +7498,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -6835,6 +7699,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -6906,7 +7773,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -7066,6 +7933,9 @@
                         "updatedAt": {
                           "type": "string"
                         },
+                        "rawResource": {
+                          "nullable": true
+                        },
                         "warnings": {
                           "type": "array",
                           "items": {
@@ -7135,7 +8005,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -7339,6 +8209,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -7410,7 +8283,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -7615,6 +8488,9 @@
                                   "updatedAt": {
                                     "type": "string"
                                   },
+                                  "rawResource": {
+                                    "nullable": true
+                                  },
                                   "warnings": {
                                     "type": "array",
                                     "items": {
@@ -7695,7 +8571,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
@@ -7892,6 +8768,9 @@
                             "updatedAt": {
                               "type": "string"
                             },
+                            "rawResource": {
+                              "nullable": true
+                            },
                             "warnings": {
                               "type": "array",
                               "items": {
@@ -7963,7 +8842,7 @@
                         "CONNECTOR::OPERATION::RESOURCE_NOT_FOUND",
                         "CONNECTOR::OPERATION::BAD_REQUEST",
                         "CONNECTOR::OPERATION::SERVER_ERROR",
-                        "CONNECTOR::RESOURCE_TYPE::NOT_FOUND",
+                        "CONNECTOR::RESOURCE_MODEL::NOT_FOUND",
                         "CONNECTOR::MAPPER::READ_VALIDATION_FAILED",
                         "CONNECTOR::MAPPER::READ_FAILED",
                         "CONNECTOR::UNKNOWN_ERROR",
