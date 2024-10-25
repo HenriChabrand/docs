@@ -18,7 +18,7 @@
     "light": "#5e4dff",
     "dark": "#5e4dff",
     "background": {
-      "dark": "#1c1b33",
+      "dark": "#090D0D",
       "light": "#fcfcfc"
     },
     "anchors": {
@@ -28,7 +28,7 @@
   },
   "theme": "prism",
   "background": {
-    "style": "grid"
+    "style": "windows"
   },
   "modeToggle": { "default": "dark" },
   "topbarLinks": [

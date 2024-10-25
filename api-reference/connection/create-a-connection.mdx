@@ -2,21 +2,13 @@
 openapi: post /v1/connections/{connectorId}/{ownerId}
 ---
 
-# Creating a Connection
-
-This guide explains how to create a new connection using the Morph Cloud SDK. A connection represents a link between your application and a third-party service (like HubSpot or Salesforce) for a specific user or organization.
-
 ## Installation
-
-First, install the required packages:
 
 ```bash
 yarn add @runmorph/cloud
 ```
 
-## Basic Usage
-
-Here's a simple example of creating a connection:
+## Usage
 
 ```typescript
 import { Morph } from "@runmorph/cloud";
@@ -36,4 +28,24 @@ const { data, error } = await morph
   .create({ operations: ["genericContact::list", "crmOpportunity::create"] });
 ```
 
----
+<RequestExample>
+
+```typescript
+import { Morph } from "@runmorph/cloud";
+
+// Initialize Morph instance
+const morph = Morph({
+  apiKey: process.env.MORPH_API_KEY,
+  apiSecret: process.env.MORPH_API_SECRET,
+});
+
+// Create a connection
+const { data, error } = await morph
+  .connection({
+    connectorId: "hubspot",
+    ownerId: "my_customer_id",
+  })
+  .create({ operations: ["genericContact::list", "crmOpportunity::create"] });
+```
+
+## </RequestExample>
