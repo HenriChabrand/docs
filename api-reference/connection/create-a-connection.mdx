@@ -25,7 +25,6 @@ const { data, error } = await morph
   })
   .create({ operations: ["genericContact::list", "crmOpportunity::create"] });
 ```
-
 ```bash cURL
 curl --request POST \
   --url https://morph-api-staging.onrender.com/v1/connections/{connectorId}/{ownerId} \
@@ -34,8 +33,8 @@ curl --request POST \
   --header 'x-api-secret: <x-api-secret>' \
   --data '{
   "operations": [
-    "<operation-type>"
+    "<string>"
   ]
-}'```
-
+}'
+```
 </RequestExample>
