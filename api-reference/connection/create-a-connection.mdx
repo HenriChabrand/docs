@@ -6,30 +6,9 @@ import MorphCloudInstallCmd from '/snippets/morph-cloud-install-cmd.mdx';
 
 <MorphCloudInstallCmd />
 
-
-## Usage
-
-```typescript
-import { Morph } from "@runmorph/cloud";
-
-// Initialize Morph instance
-const morph = Morph({
-  apiKey: process.env.MORPH_API_KEY,
-  apiSecret: process.env.MORPH_API_SECRET,
-});
-
-// Create a connection
-const { data, error } = await morph
-  .connection({
-    connectorId: "hubspot",
-    ownerId: "my_customer_id",
-  })
-  .create({ operations: ["genericContact::list", "crmOpportunity::create"] });
-```
-
 <RequestExample>
 
-```typescript
+```typescript TypeScript
 import { Morph } from "@runmorph/cloud";
 
 // Initialize Morph instance
@@ -46,5 +25,17 @@ const { data, error } = await morph
   })
   .create({ operations: ["genericContact::list", "crmOpportunity::create"] });
 ```
+
+```bash cURL
+curl --request POST \
+  --url https://morph-api-staging.onrender.com/v1/connections/{connectorId}/{ownerId} \
+  --header 'Content-Type: application/json' \
+  --header 'x-api-key: <x-api-key>' \
+  --header 'x-api-secret: <x-api-secret>' \
+  --data '{
+  "operations": [
+    "<operation-type>"
+  ]
+}'```
 
 </RequestExample>
