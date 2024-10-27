@@ -70,8 +70,6 @@
     },
     {
       "group": "Connection",
-      "icon": "key",
-      "iconType": "duotone",
       "pages": [
         "morph-cloud-api-reference/connection/list-connections",
         "morph-cloud-api-reference/connection/retrieve-a-connection",
@@ -89,12 +87,21 @@
     },
     {
       "group": "Generic Models",
-      "icon": "user-group",
-      "iconType": "duotone",
       "pages": [
         {
-          "group": "Company",
+          "group": "Contact",
            "icon": "user-group",
+      "iconType": "duotone",
+          "pages": [
+            "morph-cloud-api-reference/contact/retrieve-contact",
+            "morph-cloud-api-reference/contact/update-contact",
+            "morph-cloud-api-reference/contact/list-contact",
+            "morph-cloud-api-reference/contact/create-contact"
+          ]
+        },
+        {
+          "group": "Company",
+           "icon": "building",
       "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/company/retrieve-company",
@@ -104,16 +111,9 @@
           ]
         },
         {
-          "group": "Contact",
-          "pages": [
-            "morph-cloud-api-reference/contact/retrieve-contact",
-            "morph-cloud-api-reference/contact/update-contact",
-            "morph-cloud-api-reference/contact/list-contact",
-            "morph-cloud-api-reference/contact/create-contact"
-          ]
-        },
-        {
           "group": "User",
+           "icon": "users-medical",
+      "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/user/retrieve-user",
             "morph-cloud-api-reference/user/update-user",
@@ -123,6 +123,8 @@
         },
         {
           "group": "Workspace",
+           "icon": "network-wired",
+      "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/workspace/retrieve-workspace",
             "morph-cloud-api-reference/workspace/update-workspace",
@@ -134,11 +136,11 @@
     },
     {
       "group": "Crm Models",
-      "icon": "badge-dollar",
-      "iconType": "duotone",
       "pages": [
         {
           "group": "Opportunity",
+      "icon": "badge-dollar",
+      "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/opportunity/retrieve-opportunity",
             "morph-cloud-api-reference/opportunity/update-opportunity",
@@ -147,23 +149,26 @@
           ]
         },
         {
-          "group": "Stage",
-          "pages": [
-            "morph-cloud-api-reference/stage/retrieve-stage",
-            "morph-cloud-api-reference/stage/update-stage",
-            "morph-cloud-api-reference/stage/list-stage",
-            "morph-cloud-api-reference/stage/create-stage"
-          ]
-        },
-        {
           "group": "Pipeline",
+           "icon": "square-kanban",
+      "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/pipeline/retrieve-pipeline",
             "morph-cloud-api-reference/pipeline/update-pipeline",
             "morph-cloud-api-reference/pipeline/list-pipeline",
             "morph-cloud-api-reference/pipeline/create-pipeline"
           ]
-        }
+        },{
+          "group": "Stage",
+           "icon": "flag-pennant",
+      "iconType": "duotone",
+          "pages": [
+            "morph-cloud-api-reference/stage/retrieve-stage",
+            "morph-cloud-api-reference/stage/update-stage",
+            "morph-cloud-api-reference/stage/list-stage",
+            "morph-cloud-api-reference/stage/create-stage"
+          ]
+        }        
       ]
     }
   ],
