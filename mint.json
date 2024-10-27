@@ -44,6 +44,10 @@
   },
   "tabs": [
     {
+      "name": "Morph Core",
+      "url": "introduction"
+    },
+    {
       "name": "Morph Cloud",
       "url": "morph-cloud-api-reference"
     }
