@@ -1,12 +1,12 @@
 {
-  "openapi": ["api-reference/openapi.json"],
+  "$schema": "https://mintlify.com/schema.json",
+  "openapi": ["morph-cloud-api-reference/openapi.json"],
   "api": {
     "baseUrl": "https://api.runmorph.dev",
     "auth": {
       "method": "bearer"
     }
   },
-  "$schema": "https://mintlify.com/schema.json",
   "name": "Morph_",
   "logo": {
     "dark": "/logo/dark.svg",
@@ -26,42 +26,37 @@
       "to": "#361dd0"
     }
   },
-  "theme": "prism",
+  "theme": "venus",
   "background": {
     "style": "windows"
   },
   "modeToggle": { "default": "dark" },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Community",
+      "url": "https://join.slack.com/t/morphcommunity/shared_invite/zt-2tc1vo0n7-8lUPL8~D7wwjC4UmbujAUA"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Morph Cloud",
+    "url": "https://app.runmorph.dev"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
+      "name": "Morph Cloud",
+      "url": "morph-cloud-api-reference"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "CDK",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "Introduction",
+      "icon": "house",
+      "url": "introduction"
     },
     {
       "name": "Community",
       "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://join.slack.com/t/morphcommunity/shared_invite/zt-2tc1vo0n7-8lUPL8~D7wwjC4UmbujAUA"
     }
   ],
   "navigation": [
@@ -70,19 +65,19 @@
       "icon": "key",
       "iconType": "duotone",
       "pages": [
-        "api-reference/connection/list-connections",
-        "api-reference/connection/retrieve-a-connection",
-        "api-reference/connection/create-a-connection",
-        "api-reference/connection/delete-a-connection",
-        "api-reference/connection/update-a-connection",
-        "api-reference/connection/authorize-a-connection"
+        "morph-cloud-api-reference/connection/list-connections",
+        "morph-cloud-api-reference/connection/retrieve-a-connection",
+        "morph-cloud-api-reference/connection/create-a-connection",
+        "morph-cloud-api-reference/connection/delete-a-connection",
+        "morph-cloud-api-reference/connection/update-a-connection",
+        "morph-cloud-api-reference/connection/authorize-a-connection"
       ]
     },
     {
       "group": "Proxy",
       "icon": "circle-nodes",
       "iconType": "duotone",
-      "pages": ["api-reference/proxy/proxy-request-to-connector"]
+      "pages": ["morph-cloud-api-reference/proxy/proxy-request-to-connector"]
     },
     {
       "group": "Generic Models",
@@ -92,37 +87,37 @@
         {
           "group": "Company",
           "pages": [
-            "api-reference/company/retrieve-company",
-            "api-reference/company/update-company",
-            "api-reference/company/list-company",
-            "api-reference/company/create-company"
+            "morph-cloud-api-reference/company/retrieve-company",
+            "morph-cloud-api-reference/company/update-company",
+            "morph-cloud-api-reference/company/list-company",
+            "morph-cloud-api-reference/company/create-company"
           ]
         },
         {
           "group": "Contact",
           "pages": [
-            "api-reference/contact/retrieve-contact",
-            "api-reference/contact/update-contact",
-            "api-reference/contact/list-contact",
-            "api-reference/contact/create-contact"
+            "morph-cloud-api-reference/contact/retrieve-contact",
+            "morph-cloud-api-reference/contact/update-contact",
+            "morph-cloud-api-reference/contact/list-contact",
+            "morph-cloud-api-reference/contact/create-contact"
           ]
         },
         {
           "group": "User",
           "pages": [
-            "api-reference/user/retrieve-user",
-            "api-reference/user/update-user",
-            "api-reference/user/list-user",
-            "api-reference/user/create-user"
+            "morph-cloud-api-reference/user/retrieve-user",
+            "morph-cloud-api-reference/user/update-user",
+            "morph-cloud-api-reference/user/list-user",
+            "morph-cloud-api-reference/user/create-user"
           ]
         },
         {
           "group": "Workspace",
           "pages": [
-            "api-reference/workspace/retrieve-workspace",
-            "api-reference/workspace/update-workspace",
-            "api-reference/workspace/list-workspace",
-            "api-reference/workspace/create-workspace"
+            "morph-cloud-api-reference/workspace/retrieve-workspace",
+            "morph-cloud-api-reference/workspace/update-workspace",
+            "morph-cloud-api-reference/workspace/list-workspace",
+            "morph-cloud-api-reference/workspace/create-workspace"
           ]
         }
       ]
@@ -135,36 +130,36 @@
         {
           "group": "Opportunity",
           "pages": [
-            "api-reference/opportunity/retrieve-opportunity",
-            "api-reference/opportunity/update-opportunity",
-            "api-reference/opportunity/list-opportunity",
-            "api-reference/opportunity/create-opportunity"
+            "morph-cloud-api-reference/opportunity/retrieve-opportunity",
+            "morph-cloud-api-reference/opportunity/update-opportunity",
+            "morph-cloud-api-reference/opportunity/list-opportunity",
+            "morph-cloud-api-reference/opportunity/create-opportunity"
           ]
         },
         {
           "group": "Stage",
           "pages": [
-            "api-reference/stage/retrieve-stage",
-            "api-reference/stage/update-stage",
-            "api-reference/stage/list-stage",
-            "api-reference/stage/create-stage"
+            "morph-cloud-api-reference/stage/retrieve-stage",
+            "morph-cloud-api-reference/stage/update-stage",
+            "morph-cloud-api-reference/stage/list-stage",
+            "morph-cloud-api-reference/stage/create-stage"
           ]
         },
         {
           "group": "Pipeline",
           "pages": [
-            "api-reference/pipeline/retrieve-pipeline",
-            "api-reference/pipeline/update-pipeline",
-            "api-reference/pipeline/list-pipeline",
-            "api-reference/pipeline/create-pipeline"
+            "morph-cloud-api-reference/pipeline/retrieve-pipeline",
+            "morph-cloud-api-reference/pipeline/update-pipeline",
+            "morph-cloud-api-reference/pipeline/list-pipeline",
+            "morph-cloud-api-reference/pipeline/create-pipeline"
           ]
         }
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/henrichabrand",
+    "github": "https://github.com/run-morph/runmorph",
+    "linkedin": "https://www.linkedin.com/in/henri-chabrand--product-manager"
   }
 }
