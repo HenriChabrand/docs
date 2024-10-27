@@ -38,9 +38,8 @@
     }
   ],
   "topbarCtaButton": {
-    "arrow": true,
-    "name": "Morph Cloud",
-    "url": "https://app.runmorph.dev"
+   "type": "github",
+    "url": "https://github.com/run-morph/runmorph"
   },
   "tabs": [
     {
