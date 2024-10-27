@@ -38,6 +38,7 @@
     }
   ],
   "topbarCtaButton": {
+    "arrow": true,
     "name": "Morph Cloud",
     "url": "https://app.runmorph.dev"
   },
@@ -60,6 +61,10 @@
     }
   ],
   "navigation": [
+    {
+      "group": "Get Started",
+      "pages": ["introduction"]
+    },
     {
       "group": "Connection",
       "icon": "key",
