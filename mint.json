@@ -94,6 +94,8 @@
       "pages": [
         {
           "group": "Company",
+           "icon": "user-group",
+      "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/company/retrieve-company",
             "morph-cloud-api-reference/company/update-company",
