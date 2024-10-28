@@ -235,7 +235,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive", "salesforce"]
+              "enum": ["hubspot", "pipedrive"]
             },
             "required": true,
             "name": "connectorId",
@@ -381,7 +381,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive", "salesforce"]
+              "enum": ["hubspot", "pipedrive"]
             },
             "required": true,
             "name": "connectorId",
@@ -405,7 +405,44 @@
                   "operations": {
                     "type": "array",
                     "items": {
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "genericCompany::create",
+                        "genericCompany::retrieve",
+                        "genericCompany::list",
+                        "genericCompany::update",
+                        "genericCompany::delete",
+                        "genericContact::create",
+                        "genericContact::retrieve",
+                        "genericContact::list",
+                        "genericContact::update",
+                        "genericContact::delete",
+                        "genericUser::create",
+                        "genericUser::retrieve",
+                        "genericUser::list",
+                        "genericUser::update",
+                        "genericUser::delete",
+                        "genericWorkspace::create",
+                        "genericWorkspace::retrieve",
+                        "genericWorkspace::list",
+                        "genericWorkspace::update",
+                        "genericWorkspace::delete",
+                        "crmOpportunity::create",
+                        "crmOpportunity::retrieve",
+                        "crmOpportunity::list",
+                        "crmOpportunity::update",
+                        "crmOpportunity::delete",
+                        "crmStage::create",
+                        "crmStage::retrieve",
+                        "crmStage::list",
+                        "crmStage::update",
+                        "crmStage::delete",
+                        "crmPipeline::create",
+                        "crmPipeline::retrieve",
+                        "crmPipeline::list",
+                        "crmPipeline::update",
+                        "crmPipeline::delete"
+                      ]
                     }
                   }
                 },
@@ -546,7 +583,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive", "salesforce"]
+              "enum": ["hubspot", "pipedrive"]
             },
             "required": true,
             "name": "connectorId",
@@ -570,10 +607,49 @@
                   "operations": {
                     "type": "array",
                     "items": {
-                      "type": "string"
+                      "type": "string",
+                      "enum": [
+                        "genericCompany::create",
+                        "genericCompany::retrieve",
+                        "genericCompany::list",
+                        "genericCompany::update",
+                        "genericCompany::delete",
+                        "genericContact::create",
+                        "genericContact::retrieve",
+                        "genericContact::list",
+                        "genericContact::update",
+                        "genericContact::delete",
+                        "genericUser::create",
+                        "genericUser::retrieve",
+                        "genericUser::list",
+                        "genericUser::update",
+                        "genericUser::delete",
+                        "genericWorkspace::create",
+                        "genericWorkspace::retrieve",
+                        "genericWorkspace::list",
+                        "genericWorkspace::update",
+                        "genericWorkspace::delete",
+                        "crmOpportunity::create",
+                        "crmOpportunity::retrieve",
+                        "crmOpportunity::list",
+                        "crmOpportunity::update",
+                        "crmOpportunity::delete",
+                        "crmStage::create",
+                        "crmStage::retrieve",
+                        "crmStage::list",
+                        "crmStage::update",
+                        "crmStage::delete",
+                        "crmPipeline::create",
+                        "crmPipeline::retrieve",
+                        "crmPipeline::list",
+                        "crmPipeline::update",
+                        "crmPipeline::delete"
+                      ]
                     }
                   }
-                }
+                },
+                "required": ["operations"],
+                "additionalProperties": false
               }
             }
           }
@@ -709,7 +785,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive", "salesforce"]
+              "enum": ["hubspot", "pipedrive"]
             },
             "required": true,
             "name": "connectorId",
@@ -809,7 +885,7 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive", "salesforce"]
+              "enum": ["hubspot", "pipedrive"]
             },
             "required": true,
             "name": "connectorId",
@@ -1158,7 +1234,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -1203,7 +1279,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -1353,14 +1429,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -1370,7 +1446,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -1415,7 +1491,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -1582,7 +1658,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -1627,7 +1703,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -1781,14 +1857,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -1798,7 +1874,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -1843,7 +1919,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -2012,7 +2088,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -2081,7 +2157,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -2256,14 +2332,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -2273,7 +2349,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -2342,7 +2418,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -2533,7 +2609,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -2602,7 +2678,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -2780,14 +2856,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -2797,7 +2873,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -2866,7 +2942,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -3023,7 +3099,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -3080,7 +3156,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -3243,14 +3319,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -3260,7 +3336,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -3317,7 +3393,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -3496,7 +3572,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -3553,7 +3629,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -3719,14 +3795,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -3736,7 +3812,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -3793,7 +3869,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -3950,7 +4026,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -3995,7 +4071,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -4145,14 +4221,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -4162,7 +4238,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -4207,7 +4283,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -4374,7 +4450,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -4419,7 +4495,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -4573,14 +4649,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -4590,7 +4666,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -4635,7 +4711,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -4810,7 +4886,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -4846,7 +4922,7 @@
                                   "type": "string",
                                   "enum": ["resourceRef", "resource"]
                                 },
-                                "type": {
+                                "model": {
                                   "type": "string"
                                 },
                                 "fields": {
@@ -4875,7 +4951,7 @@
                                   "type": "string",
                                   "enum": ["resourceRef", "resource"]
                                 },
-                                "type": {
+                                "model": {
                                   "type": "string"
                                 },
                                 "fields": {
@@ -4904,7 +4980,7 @@
                                   "type": "string",
                                   "enum": ["resourceRef", "resource"]
                                 },
-                                "type": {
+                                "model": {
                                   "type": "string"
                                 },
                                 "fields": {
@@ -4935,7 +5011,7 @@
                                     "type": "string",
                                     "enum": ["resourceRef", "resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "fields": {
@@ -4967,7 +5043,7 @@
                                     "type": "string",
                                     "enum": ["resourceRef", "resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "fields": {
@@ -5017,7 +5093,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -5157,7 +5233,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -5186,7 +5262,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -5215,7 +5291,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -5246,7 +5322,7 @@
                           "type": "string",
                           "enum": ["resourceRef", "resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "fields": {
@@ -5278,7 +5354,7 @@
                           "type": "string",
                           "enum": ["resourceRef", "resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "fields": {
@@ -5329,14 +5405,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -5346,7 +5422,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -5382,7 +5458,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -5411,7 +5487,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -5440,7 +5516,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -5471,7 +5547,7 @@
                                         "type": "string",
                                         "enum": ["resourceRef", "resource"]
                                       },
-                                      "type": {
+                                      "model": {
                                         "type": "string"
                                       },
                                       "fields": {
@@ -5503,7 +5579,7 @@
                                         "type": "string",
                                         "enum": ["resourceRef", "resource"]
                                       },
-                                      "type": {
+                                      "model": {
                                         "type": "string"
                                       },
                                       "fields": {
@@ -5553,7 +5629,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -5694,7 +5770,7 @@
                       "type": "string",
                       "enum": ["resourceRef", "resource"]
                     },
-                    "type": {
+                    "model": {
                       "type": "string"
                     },
                     "fields": {
@@ -5723,7 +5799,7 @@
                       "type": "string",
                       "enum": ["resourceRef", "resource"]
                     },
-                    "type": {
+                    "model": {
                       "type": "string"
                     },
                     "fields": {
@@ -5752,7 +5828,7 @@
                       "type": "string",
                       "enum": ["resourceRef", "resource"]
                     },
-                    "type": {
+                    "model": {
                       "type": "string"
                     },
                     "fields": {
@@ -5783,7 +5859,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -5815,7 +5891,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -5882,7 +5958,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -5918,7 +5994,7 @@
                                             "type": "string",
                                             "enum": ["resourceRef", "resource"]
                                           },
-                                          "type": {
+                                          "model": {
                                             "type": "string"
                                           },
                                           "fields": {
@@ -5947,7 +6023,7 @@
                                             "type": "string",
                                             "enum": ["resourceRef", "resource"]
                                           },
-                                          "type": {
+                                          "model": {
                                             "type": "string"
                                           },
                                           "fields": {
@@ -5976,7 +6052,7 @@
                                             "type": "string",
                                             "enum": ["resourceRef", "resource"]
                                           },
-                                          "type": {
+                                          "model": {
                                             "type": "string"
                                           },
                                           "fields": {
@@ -6010,7 +6086,7 @@
                                                 "resource"
                                               ]
                                             },
-                                            "type": {
+                                            "model": {
                                               "type": "string"
                                             },
                                             "fields": {
@@ -6045,7 +6121,7 @@
                                                 "resource"
                                               ]
                                             },
-                                            "type": {
+                                            "model": {
                                               "type": "string"
                                             },
                                             "fields": {
@@ -6095,7 +6171,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -6238,7 +6314,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -6267,7 +6343,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -6296,7 +6372,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -6327,7 +6403,7 @@
                           "type": "string",
                           "enum": ["resourceRef", "resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "fields": {
@@ -6359,7 +6435,7 @@
                           "type": "string",
                           "enum": ["resourceRef", "resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "fields": {
@@ -6411,14 +6487,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -6428,7 +6504,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -6464,7 +6540,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -6493,7 +6569,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -6522,7 +6598,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -6553,7 +6629,7 @@
                                         "type": "string",
                                         "enum": ["resourceRef", "resource"]
                                       },
-                                      "type": {
+                                      "model": {
                                         "type": "string"
                                       },
                                       "fields": {
@@ -6585,7 +6661,7 @@
                                         "type": "string",
                                         "enum": ["resourceRef", "resource"]
                                       },
-                                      "type": {
+                                      "model": {
                                         "type": "string"
                                       },
                                       "fields": {
@@ -6635,7 +6711,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -6792,7 +6868,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -6822,7 +6898,7 @@
                                   "type": "string",
                                   "enum": ["resourceRef", "resource"]
                                 },
-                                "type": {
+                                "model": {
                                   "type": "string"
                                 },
                                 "fields": {
@@ -6871,7 +6947,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -7005,7 +7081,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -7055,14 +7131,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -7072,7 +7148,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -7102,7 +7178,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -7151,7 +7227,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -7286,7 +7362,7 @@
                       "type": "string",
                       "enum": ["resourceRef", "resource"]
                     },
-                    "type": {
+                    "model": {
                       "type": "string"
                     },
                     "fields": {
@@ -7352,7 +7428,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -7387,7 +7463,7 @@
                                             "type": "string",
                                             "enum": ["resourceRef", "resource"]
                                           },
-                                          "type": {
+                                          "model": {
                                             "type": "string"
                                           },
                                           "fields": {
@@ -7436,7 +7512,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -7573,7 +7649,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -7624,14 +7700,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -7641,7 +7717,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -7671,7 +7747,7 @@
                                       "type": "string",
                                       "enum": ["resourceRef", "resource"]
                                     },
-                                    "type": {
+                                    "model": {
                                       "type": "string"
                                     },
                                     "fields": {
@@ -7720,7 +7796,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -7877,7 +7953,7 @@
                           "type": "string",
                           "enum": ["resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "id": {
@@ -7904,7 +7980,7 @@
                                     "type": "string",
                                     "enum": ["resourceRef", "resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "fields": {
@@ -7954,7 +8030,7 @@
                       },
                       "required": [
                         "object",
-                        "type",
+                        "model",
                         "id",
                         "fields",
                         "createdAt",
@@ -8085,7 +8161,7 @@
                           "type": "string",
                           "enum": ["resourceRef", "resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "fields": {
@@ -8136,14 +8212,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -8153,7 +8229,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -8180,7 +8256,7 @@
                                         "type": "string",
                                         "enum": ["resourceRef", "resource"]
                                       },
-                                      "type": {
+                                      "model": {
                                         "type": "string"
                                       },
                                       "fields": {
@@ -8230,7 +8306,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
@@ -8362,7 +8438,7 @@
                         "type": "string",
                         "enum": ["resourceRef", "resource"]
                       },
-                      "type": {
+                      "model": {
                         "type": "string"
                       },
                       "fields": {
@@ -8429,7 +8505,7 @@
                                     "type": "string",
                                     "enum": ["resource"]
                                   },
-                                  "type": {
+                                  "model": {
                                     "type": "string"
                                   },
                                   "id": {
@@ -8459,7 +8535,7 @@
                                                 "resource"
                                               ]
                                             },
-                                            "type": {
+                                            "model": {
                                               "type": "string"
                                             },
                                             "fields": {
@@ -8509,7 +8585,7 @@
                                 },
                                 "required": [
                                   "object",
-                                  "type",
+                                  "model",
                                   "id",
                                   "fields",
                                   "createdAt",
@@ -8643,7 +8719,7 @@
                           "type": "string",
                           "enum": ["resourceRef", "resource"]
                         },
-                        "type": {
+                        "model": {
                           "type": "string"
                         },
                         "fields": {
@@ -8695,14 +8771,14 @@
                               "type": "string",
                               "enum": ["resourceRef"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
                               "type": "string"
                             }
                           },
-                          "required": ["object", "type", "id"],
+                          "required": ["object", "model", "id"],
                           "additionalProperties": false
                         },
                         {
@@ -8712,7 +8788,7 @@
                               "type": "string",
                               "enum": ["resource"]
                             },
-                            "type": {
+                            "model": {
                               "type": "string"
                             },
                             "id": {
@@ -8739,7 +8815,7 @@
                                         "type": "string",
                                         "enum": ["resourceRef", "resource"]
                                       },
-                                      "type": {
+                                      "model": {
                                         "type": "string"
                                       },
                                       "fields": {
@@ -8789,7 +8865,7 @@
                           },
                           "required": [
                             "object",
-                            "type",
+                            "model",
                             "id",
                             "fields",
                             "createdAt",
