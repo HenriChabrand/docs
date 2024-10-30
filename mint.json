@@ -53,21 +53,12 @@
   ],
   "anchors": [
     {
-      "name": "Introduction",
-      "icon": "house",
-      "url": "introduction"
-    },
-    {
       "name": "Community",
       "icon": "slack",
       "url": "https://join.slack.com/t/morphcommunity/shared_invite/zt-2tc1vo0n7-8lUPL8~D7wwjC4UmbujAUA"
     }
   ],
   "navigation": [
-    {
-      "group": "Get Started",
-      "pages": ["introduction"]
-    },
     {
       "group": "Connection",
       "pages": [
