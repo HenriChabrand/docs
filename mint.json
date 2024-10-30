@@ -35,17 +35,17 @@
     {
       "name": "Community",
       "url": "https://join.slack.com/t/morphcommunity/shared_invite/zt-2tc1vo0n7-8lUPL8~D7wwjC4UmbujAUA"
+    },
+    {
+      "name": "Cloud Dashboard",
+      "url": "https://morph-dashboard-production.onrender.com/"
     }
   ],
   "topbarCtaButton": {
-   "type": "github",
+    "type": "github",
     "url": "https://github.com/morphHQ/runmorph"
   },
   "tabs": [
-    {
-      "name": "Morph Core",
-      "url": "introduction"
-    },
     {
       "name": "Morph Cloud",
       "url": "morph-cloud-api-reference"
@@ -90,8 +90,8 @@
       "pages": [
         {
           "group": "Contact",
-           "icon": "user-group",
-      "iconType": "duotone",
+          "icon": "user-group",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/contact/retrieve-contact",
             "morph-cloud-api-reference/contact/update-contact",
@@ -101,8 +101,8 @@
         },
         {
           "group": "Company",
-           "icon": "building",
-      "iconType": "duotone",
+          "icon": "building",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/company/retrieve-company",
             "morph-cloud-api-reference/company/update-company",
@@ -112,8 +112,8 @@
         },
         {
           "group": "User",
-           "icon": "users-medical",
-      "iconType": "duotone",
+          "icon": "users-medical",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/user/retrieve-user",
             "morph-cloud-api-reference/user/update-user",
@@ -123,8 +123,8 @@
         },
         {
           "group": "Workspace",
-           "icon": "network-wired",
-      "iconType": "duotone",
+          "icon": "network-wired",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/workspace/retrieve-workspace",
             "morph-cloud-api-reference/workspace/update-workspace",
@@ -139,8 +139,8 @@
       "pages": [
         {
           "group": "Opportunity",
-      "icon": "badge-dollar",
-      "iconType": "duotone",
+          "icon": "badge-dollar",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/opportunity/retrieve-opportunity",
             "morph-cloud-api-reference/opportunity/update-opportunity",
@@ -150,31 +150,32 @@
         },
         {
           "group": "Pipeline",
-           "icon": "square-kanban",
-      "iconType": "duotone",
+          "icon": "square-kanban",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/pipeline/retrieve-pipeline",
             "morph-cloud-api-reference/pipeline/update-pipeline",
             "morph-cloud-api-reference/pipeline/list-pipeline",
             "morph-cloud-api-reference/pipeline/create-pipeline"
           ]
-        },{
+        },
+        {
           "group": "Stage",
-           "icon": "flag-pennant",
-      "iconType": "duotone",
+          "icon": "flag-pennant",
+          "iconType": "duotone",
           "pages": [
             "morph-cloud-api-reference/stage/retrieve-stage",
             "morph-cloud-api-reference/stage/update-stage",
             "morph-cloud-api-reference/stage/list-stage",
             "morph-cloud-api-reference/stage/create-stage"
           ]
-        }        
+        }
       ]
     }
   ],
   "footerSocials": {
     "x": "https://x.com/henrichabrand",
-    "github": "https://github.com/run-morph/runmorph",
+    "github": "https://github.com/morphHQ/runmorph",
     "linkedin": "https://www.linkedin.com/in/henri-chabrand--product-manager"
   }
 }
