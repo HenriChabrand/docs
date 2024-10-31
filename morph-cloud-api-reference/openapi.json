@@ -1045,7 +1045,7 @@
           {
             "lang": "bash",
             "label": "List all unwatered plants",
-            "source": "planter list -u"
+            "source": "planter list -u {properties} {properties.error} ${properties} ${properties.error} {{properties}} {{properties.error}}"
           },
           {
             "lang": "javascript",
