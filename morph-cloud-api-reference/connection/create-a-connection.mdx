@@ -2,7 +2,7 @@
 openapi: post /v1/connections/{connectorId}/{ownerId}
 ---
 
-import MorphCloudInstallCmd from '/snippets/morph-cloud-install-cmd.mdx';
+import MorphCloudInstallCmd from "/snippets/morph-cloud-install-cmd.mdx";
 
 <MorphCloudInstallCmd />
 
@@ -10,7 +10,7 @@ import MorphCloudInstallCmd from '/snippets/morph-cloud-install-cmd.mdx';
 
 ```typescript TypeScript
 import { Morph } from "@runmorph/cloud";
-
+{properties} {properties.error} ${properties} ${properties.error} {{properties}} {{properties.error}}
 // Initialize Morph instance
 const morph = Morph({
   apiKey: process.env.MORPH_API_KEY,
@@ -25,6 +25,7 @@ const { data, error } = await morph
   })
   .create({ operations: ["genericContact::list", "crmOpportunity::create"] });
 ```
+
 ```bash cURL
 curl --request POST \
   --url https://morph-api-staging.onrender.com/v1/connections/{connectorId}/{ownerId} \
@@ -37,4 +38,5 @@ curl --request POST \
   ]
 }'
 ```
+
 </RequestExample>
