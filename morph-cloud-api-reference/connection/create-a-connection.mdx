@@ -7,8 +7,9 @@ import MorphCloudInstallCmd from "/snippets/morph-cloud-install-cmd.mdx";
 <MorphCloudInstallCmd />
 
 Hello from {userContext.firstName}!
-userContext : {userContext ? JSON.stringify(userContext) : "empty"}
-readContext : {readContext ? JSON.stringify(readContext) : "empty"}
+userContext : {userContext ? userContext.toString() : "empty"}
+
+readContext : {useMutableSource ? useMutableSource.toString() : "empty"}
 
 <RequestExample userContext={true}>
 
