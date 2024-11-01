@@ -218,7 +218,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive"],
+              "externalDocs": {
+                "url": "/connectors",
+                "description": "See available connectors."
+              }
             },
             "required": true,
             "name": "connectorId",
@@ -363,7 +367,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive"],
+              "externalDocs": {
+                "url": "/connectors",
+                "description": "See available connectors."
+              }
             },
             "required": true,
             "name": "connectorId",
@@ -563,7 +571,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive"],
+              "externalDocs": {
+                "url": "/connectors",
+                "description": "See available connectors."
+              }
             },
             "required": true,
             "name": "connectorId",
@@ -780,7 +792,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive"],
+              "externalDocs": {
+                "url": "/connectors",
+                "description": "See available connectors."
+              }
             },
             "required": true,
             "name": "connectorId",
@@ -880,7 +896,11 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["hubspot", "pipedrive"]
+              "enum": ["hubspot", "pipedrive"],
+              "externalDocs": {
+                "url": "/connectors",
+                "description": "See available connectors."
+              }
             },
             "required": true,
             "name": "connectorId",
