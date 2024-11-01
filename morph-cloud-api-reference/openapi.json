@@ -220,7 +220,7 @@
               "type": "string",
               "enum": ["hubspot", "pipedrive"],
               "externalDocs": {
-                "url": "/connectors",
+                "url": "https://henri.pm",
                 "description": "See available connectors."
               }
             },
