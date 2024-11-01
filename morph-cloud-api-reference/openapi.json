@@ -57,22 +57,6 @@
             "required": false,
             "name": "cursor",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "connectorId": {
-                  "type": "string"
-                },
-                "status": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": false,
-            "name": "filters",
-            "in": "query"
           }
         ],
         "responses": {
@@ -112,7 +96,8 @@
                                 "properties": {
                                   "object": {
                                     "type": "string",
-                                    "enum": ["connection"]
+                                    "enum": ["connection"],
+                                    "default": "connection"
                                   },
                                   "connectorId": {
                                     "type": "string"
@@ -137,15 +122,13 @@
                                   }
                                 },
                                 "required": [
-                                  "object",
                                   "connectorId",
                                   "ownerId",
                                   "operations",
                                   "status",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -271,7 +254,8 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "enum": ["connection"]
+                          "enum": ["connection"],
+                          "default": "connection"
                         },
                         "connectorId": {
                           "type": "string"
@@ -296,15 +280,13 @@
                         }
                       },
                       "required": [
-                        "object",
                         "connectorId",
                         "ownerId",
                         "operations",
                         "status",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -446,7 +428,6 @@
                     }
                   }
                 },
-                "required": ["operations"],
                 "additionalProperties": false
               }
             }
@@ -473,7 +454,8 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "enum": ["connection"]
+                          "enum": ["connection"],
+                          "default": "connection"
                         },
                         "connectorId": {
                           "type": "string"
@@ -498,15 +480,13 @@
                         }
                       },
                       "required": [
-                        "object",
                         "connectorId",
                         "ownerId",
                         "operations",
                         "status",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -596,6 +576,23 @@
             "required": true,
             "name": "ownerId",
             "in": "path"
+          },
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "default": false,
+              "description": "Flag to create the connection if it doesn't exist"
+            },
+            "required": false,
+            "name": "createIfMissing",
+            "in": "query"
           }
         ],
         "requestBody": {
@@ -648,7 +645,6 @@
                     }
                   }
                 },
-                "required": ["operations"],
                 "additionalProperties": false
               }
             }
@@ -675,7 +671,8 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "enum": ["connection"]
+                          "enum": ["connection"],
+                          "default": "connection"
                         },
                         "connectorId": {
                           "type": "string"
@@ -700,15 +697,13 @@
                         }
                       },
                       "required": [
-                        "object",
                         "connectorId",
                         "ownerId",
                         "operations",
                         "status",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -944,7 +939,7 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "default": "connection.authorization"
+                          "default": "connectionAuthorization"
                         }
                       }
                     },
@@ -953,7 +948,8 @@
                       "properties": {
                         "object": {
                           "type": "string",
-                          "enum": ["connection.authorization"]
+                          "enum": ["connectionAuthorization"],
+                          "default": "connectionAuthorization"
                         },
                         "connectorId": {
                           "type": "string"
@@ -968,7 +964,7 @@
                           "type": "string"
                         }
                       },
-                      "required": ["object", "connectorId", "ownerId", "status"]
+                      "required": ["connectorId", "ownerId", "status"]
                     }
                   ]
                 }
@@ -1041,28 +1037,6 @@
     },
     "/v1/proxy": {
       "post": {
-        "x-codeSamples": [
-          {
-            "lang": "bash",
-            "label": "List all unwatered plants",
-            "source": "planter list -u {properties} {properties.error} ${properties} ${properties.error} {{properties}} {{properties.error}}"
-          },
-          {
-            "lang": "javascript",
-            "label": "List all unwatered plants",
-            "source": "const planter = require('planter');\nplanter.list({ unwatered: true });"
-          },
-          {
-            "lang": "bash",
-            "label": "List all potted plants",
-            "source": "planter list -p"
-          },
-          {
-            "lang": "javascript",
-            "label": "List all potted plants",
-            "source": "const planter = require('planter');\nplanter.list({ potted: true });"
-          }
-        ],
         "summary": "Proxy request to connector",
         "tags": ["Proxy"],
         "parameters": [],
@@ -1306,8 +1280,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -1518,8 +1491,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -1622,23 +1594,6 @@
             "required": false,
             "name": "cursor",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Name"
-                }
-              },
-              "required": ["name"]
-            },
-            "required": false,
-            "name": "filters",
-            "in": "query"
           }
         ],
         "responses": {
@@ -1730,8 +1685,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -1946,8 +1900,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -2184,8 +2137,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -2445,8 +2397,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -2548,47 +2499,6 @@
             },
             "required": false,
             "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "First name"
-                },
-                "lastName": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Last name"
-                },
-                "email": {
-                  "type": "string",
-                  "minLength": 5,
-                  "maxLength": 250,
-                  "format": "email",
-                  "description": "Email"
-                },
-                "phone": {
-                  "type": "string",
-                  "minLength": 5,
-                  "maxLength": 20,
-                  "description": "Phone number"
-                },
-                "companyName": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 2,
-                  "description": "Company name"
-                }
-              }
-            },
-            "required": false,
-            "name": "filters",
             "in": "query"
           }
         ],
@@ -2705,8 +2615,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -2969,8 +2878,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -3183,8 +3091,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -3420,8 +3327,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -3523,35 +3429,6 @@
             },
             "required": false,
             "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "First name"
-                },
-                "lastName": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Last name"
-                },
-                "email": {
-                  "type": "string",
-                  "minLength": 5,
-                  "maxLength": 250,
-                  "format": "email",
-                  "description": "Email"
-                }
-              }
-            },
-            "required": false,
-            "name": "filters",
             "in": "query"
           }
         ],
@@ -3656,8 +3533,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -3896,8 +3772,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -4098,8 +3973,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -4310,8 +4184,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -4414,23 +4287,6 @@
             "required": false,
             "name": "cursor",
             "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Name"
-                }
-              },
-              "required": ["name"]
-            },
-            "required": false,
-            "name": "filters",
-            "in": "query"
           }
         ],
         "responses": {
@@ -4522,8 +4378,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -4738,8 +4593,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -5085,8 +4939,7 @@
                               },
                               "description": "Associated companies"
                             }
-                          },
-                          "required": ["name"]
+                          }
                         },
                         "createdAt": {
                           "type": "string"
@@ -5120,8 +4973,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -5621,8 +5473,7 @@
                                   },
                                   "description": "Associated companies"
                                 }
-                              },
-                              "required": ["name"]
+                              }
                             },
                             "createdAt": {
                               "type": "string"
@@ -5656,8 +5507,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -5759,185 +5609,6 @@
             },
             "required": false,
             "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Opportunity name"
-                },
-                "amount": {
-                  "type": "number",
-                  "minimum": 0,
-                  "description": "Opportunity amount"
-                },
-                "currency": {
-                  "type": "string",
-                  "minLength": 3,
-                  "maxLength": 3,
-                  "description": "Currency code"
-                },
-                "stage": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string",
-                      "enum": ["resourceRef", "resource"]
-                    },
-                    "model": {
-                      "type": "string"
-                    },
-                    "fields": {
-                      "nullable": true
-                    },
-                    "rawResource": {
-                      "nullable": true
-                    },
-                    "createdAt": {
-                      "type": "string"
-                    },
-                    "updatedAt": {
-                      "type": "string"
-                    }
-                  },
-                  "required": ["id"],
-                  "description": "Stage of the opportunity"
-                },
-                "pipeline": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string",
-                      "enum": ["resourceRef", "resource"]
-                    },
-                    "model": {
-                      "type": "string"
-                    },
-                    "fields": {
-                      "nullable": true
-                    },
-                    "rawResource": {
-                      "nullable": true
-                    },
-                    "createdAt": {
-                      "type": "string"
-                    },
-                    "updatedAt": {
-                      "type": "string"
-                    }
-                  },
-                  "required": ["id"],
-                  "description": "Pipeline of the opportunity"
-                },
-                "owner": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string",
-                      "enum": ["resourceRef", "resource"]
-                    },
-                    "model": {
-                      "type": "string"
-                    },
-                    "fields": {
-                      "nullable": true
-                    },
-                    "rawResource": {
-                      "nullable": true
-                    },
-                    "createdAt": {
-                      "type": "string"
-                    },
-                    "updatedAt": {
-                      "type": "string"
-                    }
-                  },
-                  "required": ["id"],
-                  "description": "User that own the opportunity"
-                },
-                "contacts": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "object": {
-                        "type": "string",
-                        "enum": ["resourceRef", "resource"]
-                      },
-                      "model": {
-                        "type": "string"
-                      },
-                      "fields": {
-                        "nullable": true
-                      },
-                      "rawResource": {
-                        "nullable": true
-                      },
-                      "createdAt": {
-                        "type": "string"
-                      },
-                      "updatedAt": {
-                        "type": "string"
-                      }
-                    },
-                    "required": ["id"]
-                  },
-                  "description": "Associated contacts"
-                },
-                "companies": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "object": {
-                        "type": "string",
-                        "enum": ["resourceRef", "resource"]
-                      },
-                      "model": {
-                        "type": "string"
-                      },
-                      "fields": {
-                        "nullable": true
-                      },
-                      "rawResource": {
-                        "nullable": true
-                      },
-                      "createdAt": {
-                        "type": "string"
-                      },
-                      "updatedAt": {
-                        "type": "string"
-                      }
-                    },
-                    "required": ["id"]
-                  },
-                  "description": "Associated companies"
-                }
-              },
-              "required": ["name"]
-            },
-            "required": false,
-            "name": "filters",
             "in": "query"
           }
         ],
@@ -6163,8 +5834,7 @@
                                         },
                                         "description": "Associated companies"
                                       }
-                                    },
-                                    "required": ["name"]
+                                    }
                                   },
                                   "createdAt": {
                                     "type": "string"
@@ -6198,8 +5868,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -6478,7 +6147,6 @@
                     "description": "Associated companies"
                   }
                 },
-                "required": ["name"],
                 "additionalProperties": false
               }
             }
@@ -6703,8 +6371,7 @@
                                   },
                                   "description": "Associated companies"
                                 }
-                              },
-                              "required": ["name"]
+                              }
                             },
                             "createdAt": {
                               "type": "string"
@@ -6738,8 +6405,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -6974,8 +6640,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -7254,8 +6919,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -7357,57 +7021,6 @@
             },
             "required": false,
             "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Stage name"
-                },
-                "type": {
-                  "type": "string",
-                  "enum": ["OPEN", "WON", "LOST", "UNKNOWN"],
-                  "description": "Stage type"
-                },
-                "pipeline": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "object": {
-                      "type": "string",
-                      "enum": ["resourceRef", "resource"]
-                    },
-                    "model": {
-                      "type": "string"
-                    },
-                    "fields": {
-                      "nullable": true
-                    },
-                    "rawResource": {
-                      "nullable": true
-                    },
-                    "createdAt": {
-                      "type": "string"
-                    },
-                    "updatedAt": {
-                      "type": "string"
-                    }
-                  },
-                  "required": ["id"],
-                  "description": "Associated pipeline"
-                }
-              },
-              "required": ["name", "type"]
-            },
-            "required": false,
-            "name": "filters",
             "in": "query"
           }
         ],
@@ -7539,8 +7152,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -7823,8 +7435,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -8057,8 +7668,7 @@
                         "fields",
                         "createdAt",
                         "updatedAt"
-                      ],
-                      "additionalProperties": false
+                      ]
                     }
                   ]
                 }
@@ -8333,8 +7943,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
@@ -8436,55 +8045,6 @@
             },
             "required": false,
             "name": "cursor",
-            "in": "query"
-          },
-          {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 1,
-                  "maxLength": 250,
-                  "description": "Pipeline name"
-                },
-                "stages": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "object": {
-                        "type": "string",
-                        "enum": ["resourceRef", "resource"]
-                      },
-                      "model": {
-                        "type": "string"
-                      },
-                      "fields": {
-                        "nullable": true
-                      },
-                      "rawResource": {
-                        "nullable": true
-                      },
-                      "createdAt": {
-                        "type": "string"
-                      },
-                      "updatedAt": {
-                        "type": "string"
-                      }
-                    },
-                    "required": ["id"]
-                  },
-                  "description": "Stages in the pipeline"
-                }
-              },
-              "required": ["name", "stages"]
-            },
-            "required": false,
-            "name": "filters",
             "in": "query"
           }
         ],
@@ -8612,8 +8172,7 @@
                                   "fields",
                                   "createdAt",
                                   "updatedAt"
-                                ],
-                                "additionalProperties": false
+                                ]
                               }
                             ]
                           }
@@ -8892,8 +8451,7 @@
                             "fields",
                             "createdAt",
                             "updatedAt"
-                          ],
-                          "additionalProperties": false
+                          ]
                         }
                       ]
                     }
