@@ -6,14 +6,13 @@ import MorphCloudInstallCmd from "/snippets/morph-cloud-install-cmd.mdx";
 
 <MorphCloudInstallCmd />
 
-Hello from {userContext.firstName}!
-userContext : {readContext ? JSON.stringify(readContext) : "empty"}
-
 <RequestExample userContext={true}>
 
 ```typescript TypeScript
 import { Morph } from "@runmorph/cloud";
-{properties} {properties.error} ${properties} ${properties.error} {{properties}} {{properties.error}}
+{
+  userContext ? JSON.stringify(userContext) : "empty";
+}
 // Initialize Morph instance
 const morph = Morph({
   apiKey: process.env.MORPH_API_KEY,
