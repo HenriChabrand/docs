@@ -5,7 +5,8 @@
     "baseUrl": "https://api.runmorph.dev",
     "auth": {
       "method": "bearer"
-    }
+    },
+    "request": {"example": {"languages": ["javascript","bash","go","php","python","java"]}}
   },
   "name": "Morph_",
   "logo": {

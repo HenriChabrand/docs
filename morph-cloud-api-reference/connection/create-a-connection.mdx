@@ -6,7 +6,9 @@ import MorphCloudInstallCmd from "/snippets/morph-cloud-install-cmd.mdx";
 
 <MorphCloudInstallCmd />
 
-{userContext.firstName}
+Hello from {userContext.firstName}!
+Tets {userContext.apiPlaygroundInputs ? JSON.stringify(userContext.apiPlaygroundInputs) : "No api playground inuts"}
+Foo {userContext ? JSON.stringify(userContext) : "No userContext"}
 
 <RequestExample userContext={true}>
 
